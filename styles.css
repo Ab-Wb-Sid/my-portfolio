@@ -1,0 +1,761 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #000000;
+  --secondary-color: #ff4e05;
+  --secondary-color-dark: #bf3900;
+  --text-dark: #0d1319;
+  --text-light: #9ca3af;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.section__title span {
+  color: var(--secondary-color);
+}
+
+.section__subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+.btn {
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color-dark);
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+body {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: var(--max-width);
+  padding: 1rem;
+}
+
+nav .nav__logo a {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+nav .nav__logo a span {
+  color: var(--secondary-color);
+}
+
+header {
+  height: 100vh;
+  background-image: url("assets/header-bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Add the updated CSS for header and nav social icons */
+.header__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 2rem;
+}
+
+.header__container h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+  max-width: 60%;
+}
+
+nav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: var(--max-width);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav__social .icon {
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: var(--white);
+  background-color: var(--secondary-color);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.nav__social .icon:hover {
+  background-color: var(--secondary-color-dark);
+}
+.header__container p span {
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+.header__container h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+/* Default mobile-first styling (full width) */
+.header__container p {
+  max-width: 80%;
+  margin: 1rem 0;
+}
+
+/* Apply 60% width only on larger screens (min-width: 768px) */
+@media (min-width: 768px) {
+  .header__container p {
+    max-width: 55%;
+  }
+}
+.action__btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action__btns .video {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.action__btns .video .play {
+  height: 50px;
+  width: 50px;
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  border-radius: 100%;
+  background-color: var(--secondary-color);
+  transition: 0.3s;
+}
+
+.action__btns .video span {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.action__btns .video:hover .play {
+  background-color: var(--secondary-color-dark);
+}
+
+.about,
+.project {
+  background-color: var(--text-dark);
+}
+
+.about__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about__image,
+.about__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.about__image img {
+  max-width: 350px;
+}
+
+.about__details {
+  padding: 2rem 0;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.service,
+footer {
+  background-color: var(--primary-color);
+}
+
+.service__grid,
+.project__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.service__card {
+  display: grid;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--text-dark);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.service__card i {
+  font-size: 1.5rem;
+  color: var(--white);
+  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.service__card h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.service__card p {
+  color: var(--text-light);
+  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Service Card Dropdown Styles */
+.service__details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  color: var(--text-light);
+  margin-top: 1rem;
+}
+
+.service__details p {
+  margin-top: 1rem;
+}
+
+/* Read More and Read Less Buttons */
+.service__card .read__more,
+.service__card .read__less {
+  width: max-content;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.service__card .read__more {
+  color: var(--text-light);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.service__card .read__less {
+  display: none; /* Hidden by default */
+  color: var(--white);
+  background-color: var(--secondary-color);
+}
+
+.service__card .read__more:hover,
+.service__card .read__less:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Show the detailed description when active */
+.service__card.active .service__details {
+  max-height: 500px; /* Adjust based on content length */
+}
+
+.service__card.active .read__more {
+  display: none; /* Hide "Read more" when expanded */
+}
+
+.service__card.active .read__less {
+  display: inline-block; /* Show "Read less" when expanded */
+  transition: display 0s 0.5s; /* Delay the display change until after the transition */
+}
+
+.project__card {
+  display: grid;
+  place-content: center;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project__card img {
+  transition: scale 0.3s;
+}
+
+.project__card:hover img {
+  scale: 1.1;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.footer__details {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin: 2rem 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.social__icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social__icons .icon {
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: var(--white);
+  background-color: var(--secondary-color);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.social__icons .icon:hover {
+  background-color: var(--secondary-color-dark);
+}
+
+.footer__form {
+  display: grid;
+  gap: 1rem;
+}
+
+.footer__form :is(input, textarea) {
+  padding: 1rem;
+  background-color: var(--text-dark);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+}
+
+.footer__form textarea {
+  resize: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer__form button {
+  width: max-content;
+}
+
+/* Media queries */
+
+@media (min-width: 640px) {
+  .section__title {
+    font-size: 2.5rem;
+  }
+
+  .header__container p {
+    margin: 2rem 0;
+  }
+
+  .header__container h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+
+  .action__btns {
+    gap: 2rem;
+  }
+
+  .about__container {
+    flex-direction: row;
+  }
+
+  .about__content {
+    align-items: flex-start;
+  }
+
+  .about__details {
+    text-align: left;
+  }
+
+  .service__grid,
+  .project__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .header__container h1 {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+
+  .service__grid,
+  .project__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* My Skills Section */
+.skills {
+  background-color: var(--primary-color);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.skills__card {
+  display: grid;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--text-dark);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skills__card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  z-index: -1;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.skills__card:hover::before {
+  width: 100%;
+}
+
+.skills__card:hover {
+  box-shadow: none;
+}
+
+.skills__card i {
+  font-size: 1.5rem;
+  color: var(--white);
+  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.skills__card h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.skills__card p {
+  color: var(--text-light);
+  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Skills Card Dropdown Styles */
+.skills__details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  color: var(--text-light);
+  margin-top: 1rem;
+}
+
+.skills__details p {
+  margin-top: 1rem;
+}
+
+/* Read More and Read Less Buttons */
+.skills__card .read__more,
+.skills__card .read__less {
+  width: max-content;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.skills__card .read__more {
+  color: var(--white);
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+}
+
+.skills__card .read__less {
+  display: none; /* Hidden by default */
+  color: var(--white);
+  background-color: var(--secondary-color);
+}
+
+.skills__card .read__more:hover,
+.skills__card .read__less:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Show the detailed description when active */
+.skills__card.active .skills__details {
+  max-height: 500px; /* Adjust based on content length */
+}
+
+.skills__card.active .read__more {
+  display: none; /* Hide "Read more" when expanded */
+}
+
+.skills__card.active .read__less {
+  display: inline-block; /* Show "Read less" when expanded */
+  transition: display 0s 0.5s; /* Delay the display change until after the transition */
+}
+
+/* Media Queries for Skills Section */
+@media (min-width: 640px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--text-dark);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.modal-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: var(--secondary-color);
+}
+
+/* "Say Hello" Modal Styles */
+.hello-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+  justify-content: center;
+  align-items: center;
+}
+
+.hello-modal-content {
+  background-color: var(--text-dark);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.hello-modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.hello-modal-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+.close-hello-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.close-hello-modal:hover {
+  color: var(--secondary-color);
+}
+
+/* About Details Section */
+.about-details {
+  background-color: var(--primary-color);
+  padding: 5rem 1rem;
+}
+
+.about-details__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 2rem;
+  background-color: var(--text-dark);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-details__content {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-details__content strong {
+  color: var(--secondary-color);
+}
+
+.about-details .btn {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.about-details .btn:hover {
+  background-color: var(--secondary-color-dark);
+}
+
+/* ===== Typing Animation Styles ===== */
+#typing-container {
+  max-width: 80%;
+  margin: 1rem 0;
+  min-height: 120px; /* Adjust based on text height */
+}
+
+/* Desktop adjustment */
+@media (min-width: 768px) {
+  #typing-container {
+    max-width: 55%;
+  }
+}
+
+/* Cursor styling */
+.typing-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1.2em;
+  background-color: var(--secondary-color);
+  transform: scaleX(0.5);
+  animation: blink 0.7s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Personal Portfolio Page</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__logo"><a href="#">Cod<span>e</span>r.</a></div>
+      <div class="nav__social">
+        <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank">
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank">
+          <i class="ri-mail-line"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon" target="_blank">
+          <i class="ri-linkedin-fill"></i>
+        </a>
+      </div>
+    </nav>
+    <header>
+      <div class="section__container header__container">
+        <p><span>Hello</span> I'm</p>
+        <h1>Abdul Wahab Siddiqi</h1>
+        <h2 class="section__title">Software <span>Engineer.</span></h2>
+        <p id="typing-container"></p> 
+        <div class="action__btns">
+          <button class="btn">Say Hello</button>
+          <a href="#" class="video">
+            <div class="play">
+              <i class="ri-play-fill"></i>
+            </div>
+            <span>Watch My Video</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="about">
+      <div class="section__container about__container">
+        <div class="about__image">
+          <img src="assets/about-bg.jpg" alt="about" />
+        </div>
+        <div class="about__content">
+          <h2 class="section__title">About <span>Me</span></h2>
+          <p class="section__subtitle">Creative UI/UX Designer, Full-Stack Developer & Digital Marketer!</p>
+          <p class="about__details">
+            As a UI/UX designer, I specialize in creating user interfaces and
+            experiences for digital products. I am a versatile professional with 
+            expertise in Python and C++ development, specializing in building scalable
+            applications and optimizing system performance. I also excel in digital 
+            marketing, including SEO, affiliate marketing, and managing e-commerce
+            platforms for seamless online experiences. Additionally, I am skilled in
+            content creation, video editing, and designing effective ad campaigns.
+            Passionate about sharing knowledge, I enjoy teaching and mentoring in
+            programming, design, and digital marketing. Throughout my career, I have
+            delivered successful projects, driving growth and innovation for businesses 
+            and individuals alike.
+          </p>
+          <a href="about-details.html" class="btn">More About</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="service">
+      <div class="section__container service__container">
+        <p class="section__subtitle">What I Offer!</p>
+        <h2 class="section__title"><span>My</span> Services</h2>
+        <div class="service__grid">
+          <!-- Web Design Card -->
+          <div class="service__card">
+            <i class="ri-smartphone-line"></i>
+            <h4>Web Design</h4>
+            <p>
+              We are dedicated to providing high-quality web design services
+              that are tailored to meet the specific needs of our clients.
+            </p>
+            <div class="service__details">
+              <p>
+                Our web design process involves understanding your business goals, creating wireframes, and designing user-friendly interfaces. We focus on responsive design to ensure your website looks great on all devices.
+              </p>
+            </div>
+            <button class="read__more">Read more...</button>
+            <button class="read__less" style="display: none;">Read less...</button>
+          </div>
+    
+          <!-- Web Development Card -->
+          <div class="service__card">
+            <i class="ri-code-s-slash-line"></i>
+            <h4>Web Development</h4>
+            <p>
+              We use the latest web technologies and development tools to create
+              websites that are fast, secure, and scalable.
+            </p>
+            <div class="service__details">
+              <p>
+                Our web development services include front-end and back-end development, API integration, and database management. We ensure your website is optimized for performance and security.
+              </p>
+            </div>
+            <button class="read__more">Read more...</button>
+            <button class="read__less" style="display: none;">Read less...</button>
+          </div>
+    
+          <!-- Creative Design Card -->
+          <div class="service__card">
+            <i class="ri-edit-2-line"></i>
+            <h4>Creative Design</h4>
+            <p>
+              Our approach is collaborative, and we encourage your feedback
+              throughout the design process to ensure that we are meeting your
+              expectations.
+            </p>
+            <div class="service__details">
+              <p>
+                We specialize in creating visually stunning designs that align with your brand identity. From logos to marketing materials, we bring your ideas to life with creativity and precision.
+              </p>
+            </div>
+            <button class="read__more">Read more...</button>
+            <button class="read__less" style="display: none;">Read less...</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Skills Section -->
+    <section class="skills">
+      <div class="section__container skills__container">
+        <p class="section__subtitle">What I Know!</p>
+        <h2 class="section__title"><span>My</span> Skills</h2>
+        <div class="skills__grid">
+          <!-- Skills cards will be dynamically generated here -->
+        </div>
+      </div>
+    </section>
+
+    <section class="project">
+      <div class="section__container project__container">
+        <p class="section__subtitle">Portfolio</p>
+        <h2 class="section__title"><span>Latest</span> Project</h2>
+        <div class="project__grid">
+          <div class="project__card">
+            <img src="assets/project-1.png" alt="project" />
+          </div>
+          <div class="project__card">
+            <img src="assets/project-2.png" alt="project" />
+          </div>
+          <div class="project__card">
+            <img src="assets/project-3.png" alt="project" />
+          </div>
+          <div class="project__card">
+            <img src="assets/project-4.png" alt="project" />
+          </div>
+          <div class="project__card">
+            <img src="assets/project-5.png" alt="project" />
+          </div>
+          <div class="project__card">
+            <img src="assets/project-6.png" alt="project" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="section__container footer__container">
+        <div class="footer__content">
+          <h2 class="section__title">Contact <span>Me!</span></h2>
+          <p class="section__subtitle">If you have any project in your mind</p>
+          <div class="footer__details">
+            <p>
+              You can reach me through the contact form provided on this
+              website. Simply fill out the form with your name, email address,
+              and message, and I will get back to you as soon as possible.
+            </p>
+            <p>Digital Agency Network, 20</p>
+            <p>Shad Bagh, Lahore,</p>
+            <p>Pakistan</p>
+          </div>
+          <div class="social__icons">
+            <a href="#" class="icon"><i class="ri-facebook-fill"></i></a>
+            <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank">
+              <i class="ri-mail-line"></i>
+            </a>
+            <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank">
+              <i class="ri-instagram-line"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon" target="_blank">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+          </div>
+        </div>
+        <form class="footer__form" action="https://formspree.io/f/xdkazezp" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email Address" required />
+          <input type="text" name="phone" placeholder="Your Phone Number" />
+          <textarea name="message" cols="30" rows="10" placeholder="Your Idea" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="thank-you-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Thank You!</h2>
+        <p>Your message has been sent successfully. I'll get back to you soon.</p>
+      </div>
+    </div>
+
+    <div id="hello-modal" class="hello-modal">
+      <div class="hello-modal-content">
+        <span class="close-hello-modal">&times;</span>
+        <h2>Hello! 👋</h2>
+        <p>Welcome to my portfolio! I'm Abdul Wahab, a Software Engineer and Digital Marketer. Feel free to explore my work and get in touch!</p>
+      </div>
+    </div>
+
+    <script>
+      // Skills Data
+      const skillsData = [
+        {
+          icon: "ri-code-line",
+          title: "Python Development",
+          description: "Proficient in Python programming, including scripting, automation, and building scalable applications.",
+          details: "I have extensive experience in Python, working on projects ranging from web development to data analysis and machine learning. I specialize in creating efficient and scalable solutions."
+        },
+        {
+          icon: "ri-braces-line",
+          title: "C++ Development",
+          description: "Experienced in C++ programming, focusing on system-level programming and performance optimization.",
+          details: "I have worked on low-level system programming and performance-critical applications using C++. My expertise includes memory management and algorithm optimization."
+        },
+        {
+          icon: "ri-search-line",
+          title: "SEO Optimization",
+          description: "Expertise in search engine optimization to improve website visibility and organic traffic.",
+          details: "I specialize in on-page and off-page SEO strategies, keyword research, and technical SEO to boost website rankings and drive organic traffic."
+        },
+        {
+          icon: "ri-line-chart-line",
+          title: "Digital Marketing",
+          description: "Skilled in digital marketing strategies, including social media, email marketing, and PPC campaigns.",
+          details: "I have managed successful digital marketing campaigns across various platforms, including Google Ads, Facebook Ads, and email marketing tools."
+        },
+        {
+          icon: "ri-shopping-cart-line",
+          title: "E-Commerce Solutions",
+          description: "Experience in building and managing e-commerce platforms for seamless online shopping experiences.",
+          details: "I have developed and managed e-commerce websites using platforms like Shopify, WooCommerce, and Magento, ensuring a smooth user experience."
+        },
+        {
+          icon: "ri-article-line",
+          title: "Content Creation",
+          description: "Creating engaging and SEO-friendly content for blogs, websites, and social media platforms.",
+          details: "I specialize in creating high-quality, SEO-optimized content that drives engagement and conversions."
+        },
+        {
+          icon: "ri-scissors-line",
+          title: "Video & Photo Editing",
+          description: "Proficient in editing videos and photos for professional and creative projects.",
+          details: "I have experience using tools like Canva and Capcut to create visually stunning content."
+        },
+        {
+          icon: "ri-money-dollar-circle-line",
+          title: "Affiliate Marketing",
+          description: "Expertise in affiliate marketing strategies to drive revenue through partnerships.",
+          details: "I have managed affiliate marketing campaigns, optimizing partnerships and tracking performance to maximize revenue."
+        },
+        {
+          icon: "ri-megaphone-line",
+          title: "Ad Campaigns",
+          description: "Designing and managing effective ad campaigns for social media and search engines.",
+          details: "I have created and managed ad campaigns on platforms like Google Ads, Facebook Ads, and Instagram Ads, achieving high ROI."
+        },
+        {
+          icon: "ri-book-open-line",
+          title: "Teaching & Mentoring",
+          description: "Passionate about teaching and mentoring in programming, design, and digital marketing.",
+          details: "I enjoy sharing my knowledge and mentoring others in programming, design, and digital marketing to help them achieve their goals."
+        }
+      ];
+
+      // Generate Skills Cards
+      function generateSkillCards() {
+        const skillsGrid = document.querySelector(".skills__grid");
+        
+        skillsData.forEach(skill => {
+          const card = document.createElement("div");
+          card.className = "skills__card";
+          card.innerHTML = `
+            <i class="${skill.icon}"></i>
+            <h4>${skill.title}</h4>
+            <p>${skill.description}</p>
+            <div class="skills__details">
+              <p>${skill.details}</p>
+            </div>
+            <button class="read__more">Read more...</button>
+            <button class="read__less" style="display: none;">Read less...</button>
+          `;
+          skillsGrid.appendChild(card);
+        });
+
+        // Skills Section Event Listeners
+        document.querySelectorAll(".skills__card .read__more").forEach(button => {
+          button.addEventListener("click", () => {
+            const card = button.closest(".skills__card");
+            card.classList.add("active");
+          });
+        });
+
+        document.querySelectorAll(".skills__card .read__less").forEach(button => {
+          button.addEventListener("click", () => {
+            const card = button.closest(".skills__card");
+            card.classList.remove("active");
+          });
+        });
+      }
+
+      // Initialize Skills Section
+      generateSkillCards();
+
+      // Existing JavaScript for other functionalities
+      // ... (Keep all your existing JavaScript code for modals and services here)
+    </script>
+
+    <!-- Existing JavaScript for Modals and Services -->
+    <script>
+      // Modal functionality
+      const modal = document.getElementById("thank-you-modal");
+      const closeModal = document.querySelector(".close-modal");
+
+      function showModal() { modal.style.display = "flex"; }
+      function hideModal() { modal.style.display = "none"; }
+
+      closeModal.addEventListener("click", hideModal);
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) hideModal();
+      });
+
+      // Form submission
+      document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        fetch(this.action, {
+          method: "POST",
+          body: new FormData(this),
+          headers: { Accept: "application/json" }
+        }).then(response => {
+          if (response.ok) {
+            showModal();
+            this.reset();
+          } else {
+            alert("Failed to send message. Please try again.");
+          }
+        }).catch(() => alert("Failed to send message. Please try again."));
+      });
+
+      // Say Hello modal
+      const helloModal = document.getElementById("hello-modal");
+      const sayHelloBtn = document.querySelector(".action__btns .btn");
+      const closeHelloModal = document.querySelector(".close-hello-modal");
+
+      function showHelloModal() { helloModal.style.display = "flex"; }
+      function hideHelloModal() { helloModal.style.display = "none"; }
+
+      sayHelloBtn.addEventListener("click", showHelloModal);
+      closeHelloModal.addEventListener("click", hideHelloModal);
+      window.addEventListener("click", (event) => {
+        if (event.target === helloModal) hideHelloModal();
+      });
+
+      // Service cards functionality
+      document.querySelectorAll(".service__card .read__more").forEach(button => {
+        button.addEventListener("click", () => {
+          button.closest(".service__card").classList.add("active");
+        });
+      });
+
+      document.querySelectorAll(".service__card .read__less").forEach(button => {
+        button.addEventListener("click", () => {
+          button.closest(".service__card").classList.remove("active");
+        });
+      });
+    </script>
+
+    <script>
+      // Typing animation
+      const text = "Welcome to my web developer portfolio! I'm Abdul Wahab, a skilled and creative web developer with a passion for creating beautiful, responsive, and user-friendly websites. I've worked on a variety of web projects, ranging from personal blogs to e-commerce platforms.";
+      const container = document.getElementById('typing-container');
+      
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          container.innerHTML = text.substring(0, i + 1) + '<span class="typing-cursor"></span>';
+          i++;
+          setTimeout(typeWriter, 20); // Typing speed (20ms per character)
+        } else {
+          // Keep cursor blinking after completion
+          container.innerHTML = text + '<span class="typing-cursor"></span>';
+        }
+      }
+      
+      // Start animation after page loads
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(typeWriter, 500); // 0.5s delay before starting
+      });
+    </script>
+
+  </body>
+</html>
