@@ -143,6 +143,73 @@ nav {
 .nav__social .icon:hover {
   background-color: var(--secondary-color-dark);
 }
+
+/* Add this after your existing nav styles */
+.nav__links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav__links a {
+  color: var(--white);
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav__links a:hover {
+  color: var(--secondary-color);
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--secondary-color);
+  transition: width 0.3s;
+}
+
+.nav__links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu styles */
+.nav__toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .nav__links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: var(--text-dark);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    transition: left 0.3s;
+    z-index: 999;
+  }
+
+  .nav__links.active {
+    left: 0;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+}
+
 .header__container p span {
   color: var(--white);
   padding: 0.5rem 1rem;
@@ -461,136 +528,105 @@ footer {
   }
 }
 
-/* My Skills Section */
+/* ===== Skills Section CSS (Add to styles.css) ===== */
 .skills {
   background-color: var(--primary-color);
+  padding: 5rem 1rem;
+}
+
+.skills__category {
+  margin-bottom: 3rem;
+}
+
+.skills__category-title {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 78, 5, 0.3);
 }
 
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1rem;
-  margin-top: 5rem;
+  gap: 2rem;
 }
 
-.skills__card {
-  display: grid;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 2rem;
+.skill__card {
   background-color: var(--text-dark);
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.skills__card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 5px;
-  height: 100%;
-  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
-  z-index: -1;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+.skill__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.skills__card:hover::before {
-  width: 100%;
+.skill__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
-.skills__card:hover {
-  box-shadow: none;
+.skill__info i {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin-right: 1rem;
 }
 
-.skills__card i {
-  font-size: 1.5rem;
+.skill__info h4 {
+  font-size: 1.1rem;
+  flex-grow: 1;
   color: var(--white);
-  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.skills__card h4 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--white);
-  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+.skill__percent {
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-size: 1rem;
 }
 
-.skills__card p {
-  color: var(--text-light);
-  transition: color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-/* Skills Card Dropdown Styles */
-.skills__details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-out;
-  color: var(--text-light);
-  margin-top: 1rem;
-}
-
-.skills__details p {
-  margin-top: 1rem;
-}
-
-/* Read More and Read Less Buttons */
-.skills__card .read__more,
-.skills__card .read__less {
-  width: max-content;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.skills__card .read__more {
-  color: var(--white);
-  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
-}
-
-.skills__card .read__less {
-  display: none; /* Hidden by default */
-  color: var(--white);
-  background-color: var(--secondary-color);
-}
-
-.skills__card .read__more:hover,
-.skills__card .read__less:hover {
+.skill__bar {
+  height: 8px;
   background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-/* Show the detailed description when active */
-.skills__card.active .skills__details {
-  max-height: 500px; /* Adjust based on content length */
+.skill__progress {
+  height: 100%;
+  background: linear-gradient(90deg, #f89b29, #ff0f7b);
+  border-radius: 4px;
+  width: 0;
+  transition: width 1s ease-in-out;
 }
 
-.skills__card.active .read__more {
-  display: none; /* Hide "Read more" when expanded */
+.skills__container .section__title {
+  margin-bottom: 2rem;
 }
 
-.skills__card.active .read__less {
-  display: inline-block; /* Show "Read less" when expanded */
-  transition: display 0s 0.5s; /* Delay the display change until after the transition */
+.skills__category-title {
+  margin-top: 3rem; 
+  margin-bottom: 1.5rem; 
 }
 
-/* Media Queries for Skills Section */
-@media (min-width: 640px) {
+/* Responsive Grid */
+@media (min-width: 768px) {
   .skills__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .skills__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 /* Modal Styles */
 .modal {
   display: none; /* Hidden by default */

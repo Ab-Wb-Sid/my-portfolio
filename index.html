@@ -14,6 +14,16 @@
   <body>
     <nav>
       <div class="nav__logo"><a href="#">Cod<span>e</span>r.</a></div>
+      
+      <div class="nav__links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </div>
+      
       <div class="nav__social">
         <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank">
           <i class="ri-instagram-line"></i>
@@ -25,8 +35,12 @@
           <i class="ri-linkedin-fill"></i>
         </a>
       </div>
+      
+      <div class="nav__toggle">
+        <i class="ri-menu-line"></i>
+      </div>
     </nav>
-    <header>
+    <header id="home">
       <div class="section__container header__container">
         <p><span>Hello</span> I'm</p>
         <h1>Abdul Wahab Siddiqi</h1>
@@ -44,7 +58,7 @@
       </div>
     </header>
 
-    <section class="about">
+    <section class="about" id="about">
       <div class="section__container about__container">
         <div class="about__image">
           <img src="assets/about-bg.jpg" alt="about" />
@@ -70,7 +84,7 @@
       </div>
     </section>
 
-    <section class="service">
+    <section class="service" id="services">
       <div class="section__container service__container">
         <p class="section__subtitle">What I Offer!</p>
         <h2 class="section__title"><span>My</span> Services</h2>
@@ -131,17 +145,152 @@
     </section>
 
     <!-- My Skills Section -->
-    <section class="skills">
+    <section class="skills" id="skills">
       <div class="section__container skills__container">
         <p class="section__subtitle">What I Know!</p>
         <h2 class="section__title"><span>My</span> Skills</h2>
         <div class="skills__grid">
-          <!-- Skills cards will be dynamically generated here -->
+          
+          <!-- ===== Skills Section ===== -->
+          <!-- Technical Skills -->
+          <div class="skills__category">
+            <h3 class="skills__category-title">Technical Skills</h3>
+            
+            <!-- Python -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-code-line"></i>
+                <h4>Python Development</h4>
+                <span class="skill__percent">90%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="90%"></div>
+              </div>
+            </div>
+
+            <!-- C++ -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-braces-line"></i>
+                <h4>C++ Development</h4>
+                <span class="skill__percent">85%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="85%"></div>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-javascript-line"></i>
+                <h4>JavaScript</h4>
+                <span class="skill__percent">80%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="80%"></div>
+              </div>
+            </div>
+
+            <!-- HTML/CSS -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-html5-line"></i>
+                <h4>HTML/CSS</h4>
+                <span class="skill__percent">95%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="95%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Marketing -->
+          <div class="skills__category">
+            <h3 class="skills__category-title">Digital Marketing</h3>
+            
+            <!-- SEO -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-search-line"></i>
+                <h4>SEO Optimization</h4>
+                <span class="skill__percent">85%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="85%"></div>
+              </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-share-line"></i>
+                <h4>Social Media Marketing</h4>
+                <span class="skill__percent">80%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="80%"></div>
+              </div>
+            </div>
+
+            <!-- E-Commerce -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-shopping-cart-line"></i>
+                <h4>E-Commerce</h4>
+                <span class="skill__percent">75%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="75%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creative Skills -->
+          <div class="skills__category">
+            <h3 class="skills__category-title">Creative Skills</h3>
+            
+            <!-- Content Creation -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-article-line"></i>
+                <h4>Content Creation</h4>
+                <span class="skill__percent">90%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="90%"></div>
+              </div>
+            </div>
+
+            <!-- Video Editing -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-movie-line"></i>
+                <h4>Video Editing</h4>
+                <span class="skill__percent">65%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="65%"></div>
+              </div>
+            </div>
+
+            <!-- Graphic Design -->
+            <div class="skill__card">
+              <div class="skill__info">
+                <i class="ri-pencil-ruler-line"></i>
+                <h4>Graphic Design</h4>
+                <span class="skill__percent">80%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__progress" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="project">
+    <section class="project" id="projects">
       <div class="section__container project__container">
         <p class="section__subtitle">Portfolio</p>
         <h2 class="section__title"><span>Latest</span> Project</h2>
@@ -168,7 +317,7 @@
       </div>
     </section>
 
-    <footer>
+    <footer id="contact">
       <div class="section__container footer__container">
         <div class="footer__content">
           <h2 class="section__title">Contact <span>Me!</span></h2>
@@ -222,114 +371,6 @@
         <p>Welcome to my portfolio! I'm Abdul Wahab, a Software Engineer and Digital Marketer. Feel free to explore my work and get in touch!</p>
       </div>
     </div>
-
-    <script>
-      // Skills Data
-      const skillsData = [
-        {
-          icon: "ri-code-line",
-          title: "Python Development",
-          description: "Proficient in Python programming, including scripting, automation, and building scalable applications.",
-          details: "I have extensive experience in Python, working on projects ranging from web development to data analysis and machine learning. I specialize in creating efficient and scalable solutions."
-        },
-        {
-          icon: "ri-braces-line",
-          title: "C++ Development",
-          description: "Experienced in C++ programming, focusing on system-level programming and performance optimization.",
-          details: "I have worked on low-level system programming and performance-critical applications using C++. My expertise includes memory management and algorithm optimization."
-        },
-        {
-          icon: "ri-search-line",
-          title: "SEO Optimization",
-          description: "Expertise in search engine optimization to improve website visibility and organic traffic.",
-          details: "I specialize in on-page and off-page SEO strategies, keyword research, and technical SEO to boost website rankings and drive organic traffic."
-        },
-        {
-          icon: "ri-line-chart-line",
-          title: "Digital Marketing",
-          description: "Skilled in digital marketing strategies, including social media, email marketing, and PPC campaigns.",
-          details: "I have managed successful digital marketing campaigns across various platforms, including Google Ads, Facebook Ads, and email marketing tools."
-        },
-        {
-          icon: "ri-shopping-cart-line",
-          title: "E-Commerce Solutions",
-          description: "Experience in building and managing e-commerce platforms for seamless online shopping experiences.",
-          details: "I have developed and managed e-commerce websites using platforms like Shopify, WooCommerce, and Magento, ensuring a smooth user experience."
-        },
-        {
-          icon: "ri-article-line",
-          title: "Content Creation",
-          description: "Creating engaging and SEO-friendly content for blogs, websites, and social media platforms.",
-          details: "I specialize in creating high-quality, SEO-optimized content that drives engagement and conversions."
-        },
-        {
-          icon: "ri-scissors-line",
-          title: "Video & Photo Editing",
-          description: "Proficient in editing videos and photos for professional and creative projects.",
-          details: "I have experience using tools like Canva and Capcut to create visually stunning content."
-        },
-        {
-          icon: "ri-money-dollar-circle-line",
-          title: "Affiliate Marketing",
-          description: "Expertise in affiliate marketing strategies to drive revenue through partnerships.",
-          details: "I have managed affiliate marketing campaigns, optimizing partnerships and tracking performance to maximize revenue."
-        },
-        {
-          icon: "ri-megaphone-line",
-          title: "Ad Campaigns",
-          description: "Designing and managing effective ad campaigns for social media and search engines.",
-          details: "I have created and managed ad campaigns on platforms like Google Ads, Facebook Ads, and Instagram Ads, achieving high ROI."
-        },
-        {
-          icon: "ri-book-open-line",
-          title: "Teaching & Mentoring",
-          description: "Passionate about teaching and mentoring in programming, design, and digital marketing.",
-          details: "I enjoy sharing my knowledge and mentoring others in programming, design, and digital marketing to help them achieve their goals."
-        }
-      ];
-
-      // Generate Skills Cards
-      function generateSkillCards() {
-        const skillsGrid = document.querySelector(".skills__grid");
-        
-        skillsData.forEach(skill => {
-          const card = document.createElement("div");
-          card.className = "skills__card";
-          card.innerHTML = `
-            <i class="${skill.icon}"></i>
-            <h4>${skill.title}</h4>
-            <p>${skill.description}</p>
-            <div class="skills__details">
-              <p>${skill.details}</p>
-            </div>
-            <button class="read__more">Read more...</button>
-            <button class="read__less" style="display: none;">Read less...</button>
-          `;
-          skillsGrid.appendChild(card);
-        });
-
-        // Skills Section Event Listeners
-        document.querySelectorAll(".skills__card .read__more").forEach(button => {
-          button.addEventListener("click", () => {
-            const card = button.closest(".skills__card");
-            card.classList.add("active");
-          });
-        });
-
-        document.querySelectorAll(".skills__card .read__less").forEach(button => {
-          button.addEventListener("click", () => {
-            const card = button.closest(".skills__card");
-            card.classList.remove("active");
-          });
-        });
-      }
-
-      // Initialize Skills Section
-      generateSkillCards();
-
-      // Existing JavaScript for other functionalities
-      // ... (Keep all your existing JavaScript code for modals and services here)
-    </script>
 
     <!-- Existing JavaScript for Modals and Services -->
     <script>
@@ -411,7 +452,62 @@
       window.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 500); // 0.5s delay before starting
       });
-    </script>
+
+      function animateSkillBars() {
+        const skillBars = document.querySelectorAll('.skill__progress');
+        skillBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = width;
+        });
+      }
+
+      // Animate when section is visible
+      const skillsSection = document.querySelector('.skills');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSkillBars();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
+
+      // Mobile menu toggle
+      const navToggle = document.querySelector('.nav__toggle');
+      const navLinks = document.querySelector('.nav__links');
+
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav__links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      </script>
 
   </body>
 </html>
