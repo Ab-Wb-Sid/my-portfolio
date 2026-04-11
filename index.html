@@ -65,18 +65,17 @@
         </div>
         <div class="about__content">
           <h2 class="section__title">About <span>Me</span></h2>
-          <p class="section__subtitle">Creative UI/UX Designer, Full-Stack Developer & Digital Marketer!</p>
+          <p class="section__subtitle">Software Engineer, Full-Stack Developer & Digital Marketer!</p>
           <p class="about__details">
-            As a UI/UX designer, I specialize in creating user interfaces and
-            experiences for digital products. I am a versatile professional with 
-            expertise in Python and C++ development, specializing in building scalable
-            applications and optimizing system performance. I also excel in digital 
-            marketing, including SEO, affiliate marketing, and managing e-commerce
-            platforms for seamless online experiences. Additionally, I am skilled in
-            content creation, video editing, and designing effective ad campaigns.
-            Passionate about sharing knowledge, I enjoy teaching and mentoring in
-            programming, design, and digital marketing. Throughout my career, I have
-            delivered successful projects, driving growth and innovation for businesses 
+            I am a versatile Software Engineer with expertise in Python and C++ development,
+            specializing in building scalable applications, automating workflows, and
+            optimizing system performance. I excel in full-stack web development,
+            API integration planning, and designing robust system architectures.
+            I also have hands-on experience in digital marketing, including SEO,
+            affiliate marketing, and managing e-commerce platforms for seamless online
+            experiences. Passionate about sharing knowledge, I enjoy teaching and
+            mentoring in programming and digital marketing. Throughout my career, I have
+            delivered successful projects, driving growth and innovation for businesses
             and individuals alike.
           </p>
           <a href="about-details.html" class="btn">More About</a>
@@ -293,26 +292,56 @@
     <section class="project" id="projects">
       <div class="section__container project__container">
         <p class="section__subtitle">Portfolio</p>
-        <h2 class="section__title"><span>Latest</span> Project</h2>
-        <div class="project__grid">
-          <div class="project__card">
-            <img src="assets/project-1.png" alt="project" />
+        <h2 class="section__title"><span>Latest</span> Projects</h2>
+
+        <!-- Preview cards -->
+        <div class="project__preview__grid">
+
+          <div class="project__preview__card" data-delay="0">
+            <div class="project__preview__img">
+              <img src="assets/project-1.png" alt="AI Automation Workflow Builder" />
+              <div class="project__preview__overlay">
+                <span class="project__preview__tag">In Progress</span>
+              </div>
+            </div>
+            <div class="project__preview__info">
+              <h4>AI Automation Workflow Builder</h4>
+              <p>Python · Node.js · OpenAI API · WhatsApp API</p>
+            </div>
           </div>
-          <div class="project__card">
-            <img src="assets/project-2.png" alt="project" />
+
+          <div class="project__preview__card" data-delay="1">
+            <div class="project__preview__img">
+              <img src="assets/project-2.png" alt="Plagiarism Detection System" />
+              <div class="project__preview__overlay">
+                <span class="project__preview__tag">2025</span>
+              </div>
+            </div>
+            <div class="project__preview__info">
+              <h4>Plagiarism Detection System</h4>
+              <p>C++ · NLP · Rabin-Karp Algorithm</p>
+            </div>
           </div>
-          <div class="project__card">
-            <img src="assets/project-3.png" alt="project" />
+
+          <div class="project__preview__card" data-delay="2">
+            <div class="project__preview__img">
+              <img src="assets/project-3.png" alt="Ping-Pong Game" />
+              <div class="project__preview__overlay">
+                <span class="project__preview__tag">2024</span>
+              </div>
+            </div>
+            <div class="project__preview__info">
+              <h4>Ping-Pong Game</h4>
+              <p>Java · JavaFX · Game Loop</p>
+            </div>
           </div>
-          <div class="project__card">
-            <img src="assets/project-4.png" alt="project" />
-          </div>
-          <div class="project__card">
-            <img src="assets/project-5.png" alt="project" />
-          </div>
-          <div class="project__card">
-            <img src="assets/project-6.png" alt="project" />
-          </div>
+
+        </div>
+
+        <div style="text-align:center; margin-top: 3rem;">
+          <a href="projects-page.html" class="btn projects__view__all__btn">
+            View All Projects &nbsp;<i class="ri-arrow-right-line"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -509,5 +538,18 @@
       });
       </script>
 
+    <script>
+      // Scroll reveal for project preview cards
+      const previewCards = document.querySelectorAll('.project__preview__card');
+      const previewObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            previewObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      previewCards.forEach(card => previewObserver.observe(card));
+    </script>
   </body>
 </html>

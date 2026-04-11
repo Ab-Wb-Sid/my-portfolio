@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Projects — Abdul Wahab Siddiqi</title>
+    <style>
+      /* ── Page-specific styles for projects-page.html ── */
+
+      /* Hero banner */
+      .projects-hero {
+        background-image: url("assets/header-bg.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 38vh;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 3rem;
+        position: relative;
+      }
+
+      .projects-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(13,19,25,0.85) 100%);
+      }
+
+      .projects-hero__content {
+        position: relative;
+        z-index: 1;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 1rem;
+        width: 100%;
+      }
+
+      .projects-hero__breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-bottom: 0.75rem;
+      }
+
+      .projects-hero__breadcrumb a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .projects-hero__breadcrumb a:hover { opacity: 0.8; }
+      .projects-hero__breadcrumb i { font-size: 0.7rem; }
+
+      .projects-hero__title {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.1;
+      }
+
+      .projects-hero__title span { color: var(--secondary-color); }
+
+      .projects-hero__sub {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-top: 0.5rem;
+      }
+
+      /* ── Projects full page section ── */
+      .projects-full {
+        background-color: var(--primary-color);
+        padding: 4rem 1rem 6rem;
+      }
+
+      .projects-full__inner {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      /* ── Individual Project Card ── */
+      .pcard {
+        background-color: var(--text-dark);
+        border-radius: 12px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s;
+        position: relative;
+      }
+
+      .pcard.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .pcard:nth-child(1) { transition-delay: 0.05s; }
+      .pcard:nth-child(2) { transition-delay: 0.15s; }
+      .pcard:nth-child(3) { transition-delay: 0.25s; }
+
+      .pcard:hover {
+        box-shadow: 0 12px 40px rgba(255, 78, 5, 0.18);
+      }
+
+      /* Border accent on hover */
+      .pcard::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        transition: border-color 0.4s;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .pcard:hover::before {
+        border-color: rgba(255, 78, 5, 0.35);
+      }
+
+      @media (min-width: 768px) {
+        .pcard {
+          grid-template-columns: 420px 1fr;
+        }
+        .pcard.pcard--reverse {
+          grid-template-columns: 1fr 420px;
+        }
+        .pcard.pcard--reverse .pcard__image {
+          order: 2;
+        }
+        .pcard.pcard--reverse .pcard__body {
+          order: 1;
+        }
+      }
+
+      /* ── Image side ── */
+      .pcard__image {
+        position: relative;
+        overflow: hidden;
+        min-height: 260px;
+        background: #0d0d19;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pcard__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .pcard:hover .pcard__image img {
+        transform: scale(1.05);
+      }
+
+      /* placeholder when no image */
+      .pcard__image--placeholder {
+        flex-direction: column;
+        gap: 1rem;
+        cursor: default;
+      }
+
+      .pcard__image--placeholder::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(255,78,5,0.07), transparent 70%);
+      }
+
+      .placeholder__icon {
+        position: relative;
+        z-index: 1;
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        background: rgba(255,78,5,0.1);
+        border: 1px solid rgba(255,78,5,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        color: var(--secondary-color);
+        animation: placeholderPulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes placeholderPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(255,78,5,0.25); }
+        50%       { box-shadow: 0 0 0 12px rgba(255,78,5,0); }
+      }
+
+      .placeholder__deco {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        border: 1px dashed rgba(255,78,5,0.25);
+        border-radius: 14px;
+        animation: spinSlow 10s linear infinite;
+      }
+
+      @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+      .placeholder__label {
+        position: relative;
+        z-index: 1;
+        font-size: 0.7rem;
+        color: rgba(255,78,5,0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* ── Body side ── */
+      .pcard__body {
+        padding: 2rem 2rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.25rem;
+      }
+
+      /* project index */
+      .pcard__index {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+        opacity: 0.7;
+      }
+
+      .pcard__title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.25;
+        margin: 0.3rem 0 0.75rem;
+      }
+
+      .pcard__desc {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        line-height: 1.75;
+      }
+
+      .pcard__desc strong {
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      /* bullets */
+      .pcard__bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0;
+        margin: 0.5rem 0;
+      }
+
+      .pcard__bullets li {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        line-height: 1.6;
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+
+      .pcard__bullets li::before {
+        content: '';
+        flex-shrink: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--secondary-color);
+        margin-top: 0.5rem;
+      }
+
+      /* tech tags */
+      .pcard__tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+      }
+
+      .pcard__tech-tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255,78,5,0.3);
+        color: var(--secondary-color);
+        background: rgba(255,78,5,0.06);
+        transition: background 0.2s, border-color 0.2s;
+        cursor: default;
+      }
+
+      .pcard__tech-tag:hover {
+        background: rgba(255,78,5,0.15);
+        border-color: var(--secondary-color);
+      }
+
+      /* footer row */
+      .pcard__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      /* progress */
+      .pcard__progress {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex: 1;
+        min-width: 160px;
+      }
+
+      .pcard__progress-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--text-light);
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .pcard__progress-bar {
+        flex: 1;
+        height: 4px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .pcard__progress-fill {
+        height: 100%;
+        border-radius: 999px;
+        width: 0;
+        transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+        background: linear-gradient(90deg, #ff4e05, #f89b29);
+      }
+
+      .pcard.visible .pcard__progress-fill {
+        width: var(--fill-w, 100%);
+      }
+
+      .pcard__year {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        font-weight: 500;
+      }
+
+      /* links */
+      .pcard__links {
+        display: flex;
+        gap: 0.6rem;
+      }
+
+      .pcard__link {
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 1rem;
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+      }
+      .pcard__link:hover {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        background: rgba(255,78,5,0.08);
+      }
+
+      /* ── Back button ── */
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+        text-decoration: none;
+        padding: 0.6rem 1.2rem;
+        border: 1px solid rgba(255,78,5,0.3);
+        border-radius: 5px;
+        margin-bottom: 2.5rem;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .back-btn:hover {
+        background: rgba(255,78,5,0.08);
+        border-color: var(--secondary-color);
+      }
+
+      /* ── In-progress status badge ── */
+      .pcard__status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        margin-bottom: 0.6rem;
+      }
+
+      .pcard__status--progress {
+        color: #f89b29;
+        background: rgba(248,155,41,0.1);
+        border: 1px solid rgba(248,155,41,0.3);
+      }
+
+      .pcard__status--done {
+        color: #4ade80;
+        background: rgba(74,222,128,0.08);
+        border: 1px solid rgba(74,222,128,0.25);
+      }
+
+      .pcard__status .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+
+      .pcard__status--progress .dot {
+        animation: dotBlink 1.4s ease infinite;
+      }
+
+      @keyframes dotBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+      }
+
+      /* Nav fix for inner page */
+      nav {
+        position: fixed !important;
+        top: 0;
+        left: 0 !important;
+        transform: none !important;
+        width: 100%;
+        max-width: 100%;
+        background-color: rgba(13,19,25,0.95);
+        backdrop-filter: blur(12px);
+        z-index: 100;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .projects-hero {
+        padding-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAV (matches index.html) -->
+    <nav>
+      <div class="nav__logo"><a href="index.html">Cod<span>e</span>r.</a></div>
+
+      <div class="nav__links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="projects-page.html" style="color:var(--secondary-color)">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </div>
+
+      <div class="nav__social">
+        <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank">
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank">
+          <i class="ri-mail-line"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" class="icon" target="_blank">
+          <i class="ri-linkedin-fill"></i>
+        </a>
+      </div>
+
+      <div class="nav__toggle">
+        <i class="ri-menu-line"></i>
+      </div>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="projects-hero">
+      <div class="projects-hero__content">
+        <div class="projects-hero__breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="ri-arrow-right-s-line"></i>
+          <span>Projects</span>
+        </div>
+        <h1 class="projects-hero__title">My <span>Projects</span></h1>
+        <p class="projects-hero__sub">A collection of things I've built — from AI systems to game engines.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS FULL LIST -->
+    <section class="projects-full">
+      <div class="projects-full__inner">
+
+        <a href="index.html#projects" class="back-btn">
+          <i class="ri-arrow-left-line"></i> Back to Portfolio
+        </a>
+
+        <!-- ────────────────────────────────────────
+             PROJECT 1 — AI Automation Workflow Builder
+        ──────────────────────────────────────── -->
+        <article class="pcard">
+          <div class="pcard__image pcard__image--placeholder">
+            <div class="placeholder__deco"></div>
+            <div class="placeholder__icon"><i class="ri-image-add-line"></i></div>
+            <span class="placeholder__label">Add screenshot</span>
+            <!-- To add your image, replace the 3 lines above with:
+                 <img src="assets/your-screenshot.png" alt="AI Automation Workflow Builder"> -->
+          </div>
+
+          <div class="pcard__body">
+            <div>
+              <span class="pcard__index">Project / 01</span>
+              <div class="pcard__status pcard__status--progress">
+                <span class="dot"></span> In Progress
+              </div>
+              <h2 class="pcard__title">AI Automation Workflow Builder for SMEs</h2>
+              <ul class="pcard__bullets">
+                <li>Building an <strong>AI-powered automation hub</strong> in Python that processes inbound messages, generates GPT-based replies and PDF quotations, and logs records to Google Sheets — targeting a <strong>~60% reduction</strong> in manual SME workflows.</li>
+                <li>Leading end-to-end product design including <strong>system architecture</strong>, API integration planning, and a 3-phase development roadmap (prototype → live integrations → multi-tenant SaaS); currently advancing to Node.js/Express.js backend implementation.</li>
+              </ul>
+            </div>
+
+            <div class="pcard__tech">
+              <span class="pcard__tech-tag">Python</span>
+              <span class="pcard__tech-tag">Node.js</span>
+              <span class="pcard__tech-tag">Express.js</span>
+              <span class="pcard__tech-tag">OpenAI API</span>
+              <span class="pcard__tech-tag">WhatsApp Business API</span>
+              <span class="pcard__tech-tag">Gmail API</span>
+            </div>
+
+            <div class="pcard__footer">
+              <div class="pcard__progress">
+                <span class="pcard__progress-label">Progress</span>
+                <div class="pcard__progress-bar">
+                  <div class="pcard__progress-fill" style="--fill-w: 45%;"></div>
+                </div>
+                <span class="pcard__progress-label" style="min-width:2.5rem;">45%</span>
+              </div>
+              <div class="pcard__links">
+                <a href="#" class="pcard__link" title="GitHub"><i class="ri-github-line"></i></a>
+                <a href="#" class="pcard__link" title="Live Demo"><i class="ri-external-link-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ────────────────────────────────────────
+             PROJECT 2 — Plagiarism Detection System
+        ──────────────────────────────────────── -->
+        <article class="pcard pcard--reverse">
+          <div class="pcard__image pcard__image--placeholder">
+            <div class="placeholder__deco"></div>
+            <div class="placeholder__icon"><i class="ri-image-add-line"></i></div>
+            <span class="placeholder__label">Add screenshot</span>
+          </div>
+
+          <div class="pcard__body">
+            <div>
+              <span class="pcard__index">Project / 02</span>
+              <div class="pcard__status pcard__status--done">
+                <span class="dot"></span> Completed
+              </div>
+              <h2 class="pcard__title">Plagiarism Detection System</h2>
+              <ul class="pcard__bullets">
+                <li>Built a <strong>C++ detection engine</strong> using 5+ NLP techniques — tokenization, stemming, cosine similarity, and Rabin-Karp n-gram hashing — to identify exact and semantically similar passages at word, phrase, and sentence level.</li>
+                <li>Produced <strong>color-coded severity reports</strong> with customizable thresholds, delivering structured, data-driven output across 3 levels of granularity.</li>
+              </ul>
+            </div>
+
+            <div class="pcard__tech">
+              <span class="pcard__tech-tag">C++</span>
+              <span class="pcard__tech-tag">NLP</span>
+              <span class="pcard__tech-tag">Rabin-Karp</span>
+              <span class="pcard__tech-tag">Tokenization</span>
+              <span class="pcard__tech-tag">Cosine Similarity</span>
+              <span class="pcard__tech-tag">Stemming</span>
+            </div>
+
+            <div class="pcard__footer">
+              <div class="pcard__progress">
+                <span class="pcard__progress-label">Progress</span>
+                <div class="pcard__progress-bar">
+                  <div class="pcard__progress-fill" style="--fill-w: 100%; background: linear-gradient(90deg,#4ade80,#22c55e);"></div>
+                </div>
+                <span class="pcard__progress-label" style="min-width:2.5rem;">100%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <span class="pcard__year">2025</span>
+                <div class="pcard__links">
+                  <a href="#" class="pcard__link" title="GitHub"><i class="ri-github-line"></i></a>
+                  <a href="#" class="pcard__link" title="Live Demo"><i class="ri-external-link-line"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ────────────────────────────────────────
+             PROJECT 3 — Ping-Pong Game
+        ──────────────────────────────────────── -->
+        <article class="pcard">
+          <div class="pcard__image pcard__image--placeholder">
+            <div class="placeholder__deco"></div>
+            <div class="placeholder__icon"><i class="ri-image-add-line"></i></div>
+            <span class="placeholder__label">Add screenshot</span>
+          </div>
+
+          <div class="pcard__body">
+            <div>
+              <span class="pcard__index">Project / 03</span>
+              <div class="pcard__status pcard__status--done">
+                <span class="dot"></span> Completed
+              </div>
+              <h2 class="pcard__title">Ping-Pong Game</h2>
+              <ul class="pcard__bullets">
+                <li>Engineered a <strong>real-time two-player arcade game</strong> using JavaFX animation timelines and custom collision detection logic — delivering smooth, responsive gameplay at a locked 60fps.</li>
+                <li>Implemented complete <strong>game state management</strong>, scorekeeping logic, and a fluid rendering pipeline for a polished, low-latency player experience.</li>
+              </ul>
+            </div>
+
+            <div class="pcard__tech">
+              <span class="pcard__tech-tag">Java</span>
+              <span class="pcard__tech-tag">JavaFX</span>
+              <span class="pcard__tech-tag">Game Loop</span>
+              <span class="pcard__tech-tag">Collision Detection</span>
+              <span class="pcard__tech-tag">60fps Rendering</span>
+            </div>
+
+            <div class="pcard__footer">
+              <div class="pcard__progress">
+                <span class="pcard__progress-label">Progress</span>
+                <div class="pcard__progress-bar">
+                  <div class="pcard__progress-fill" style="--fill-w: 100%; background: linear-gradient(90deg,#4ade80,#22c55e);"></div>
+                </div>
+                <span class="pcard__progress-label" style="min-width:2.5rem;">100%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <span class="pcard__year">2024</span>
+                <div class="pcard__links">
+                  <a href="#" class="pcard__link" title="GitHub"><i class="ri-github-line"></i></a>
+                  <a href="#" class="pcard__link" title="Live Demo"><i class="ri-external-link-line"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FOOTER (matches index.html) -->
+    <footer id="contact">
+      <div class="section__container footer__container">
+        <div class="footer__content">
+          <h2 class="section__title">Contact <span>Me!</span></h2>
+          <p class="section__subtitle">If you have any project in your mind</p>
+          <div class="footer__details">
+            <p>You can reach me through the contact form or directly via email.</p>
+            <p>Digital Agency Network, 20</p>
+            <p>Shad Bagh, Lahore, Pakistan</p>
+          </div>
+          <div class="social__icons">
+            <a href="#" class="icon"><i class="ri-facebook-fill"></i></a>
+            <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank"><i class="ri-mail-line"></i></a>
+            <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank"><i class="ri-instagram-line"></i></a>
+            <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" class="icon" target="_blank"><i class="ri-linkedin-fill"></i></a>
+          </div>
+        </div>
+        <form class="footer__form" action="https://formspree.io/f/xdkazezp" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email Address" required />
+          <input type="text" name="phone" placeholder="Your Phone Number" />
+          <textarea name="message" cols="30" rows="10" placeholder="Your Idea" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </footer>
+
+    <div id="thank-you-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Thank You!</h2>
+        <p>Your message has been sent successfully. I'll get back to you soon.</p>
+      </div>
+    </div>
+
+    <script>
+      // Scroll-reveal for project cards
+      const cards = document.querySelectorAll('.pcard');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(card => revealObserver.observe(card));
+
+      // Mobile menu toggle
+      const navToggle = document.querySelector('.nav__toggle');
+      const navLinks = document.querySelector('.nav__links');
+      navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.querySelectorAll('.nav__links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+      });
+
+      // Contact form
+      const modal = document.getElementById("thank-you-modal");
+      document.querySelector(".close-modal").addEventListener("click", () => modal.style.display = "none");
+      window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
+
+      document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        fetch(this.action, {
+          method: "POST",
+          body: new FormData(this),
+          headers: { Accept: "application/json" }
+        }).then(r => {
+          if (r.ok) { modal.style.display = "flex"; this.reset(); }
+          else alert("Failed to send. Please try again.");
+        }).catch(() => alert("Failed to send. Please try again."));
+      });
+    </script>
+
+  </body>
+</html>
