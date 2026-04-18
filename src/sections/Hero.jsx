@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { RiHandHeartLine, RiPlayFill } from 'react-icons/ri'
 import Modal from '../components/Modal'
@@ -100,7 +100,6 @@ function AnimatedCounter({ target, suffix = '+' }) {
     if (!el) return
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        let start = 0
         const end = parseInt(target)
         const duration = 1500
         const startTime = performance.now()
@@ -122,7 +121,7 @@ function AnimatedCounter({ target, suffix = '+' }) {
 }
 
 export default function Hero() {
-  const { displayed, done } = useTypingEffect(typingText)
+  const { displayed } = useTypingEffect(typingText)
   const [helloOpen, setHelloOpen] = useState(false)
 
   return (
