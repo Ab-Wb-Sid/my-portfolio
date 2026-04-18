@@ -1,0 +1,27 @@
+/* ── SKILLS ── */
+.skills { background:var(--text-dark); position:relative; overflow:hidden; }
+.skills::after { content:''; position:absolute; top:0; right:0; width:300px; height:300px; background:radial-gradient(circle, rgba(255,78,5,0.07), transparent 70%); pointer-events:none; }
+.skills__container { text-align:center; }
+
+.skills__grid { display:grid; grid-template-columns:1fr; gap:2rem; margin-top:3.5rem; }
+@media (min-width:768px) { .skills__grid { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1024px) { .skills__grid { grid-template-columns:repeat(3,1fr); } }
+
+.skills__category { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:1.75rem; transition:transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease; }
+.skills__category:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.3); }
+
+.skills__category-title { font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--secondary-color); margin-bottom:1.5rem; padding-bottom:.75rem; border-bottom:1px solid var(--border); text-align:left; display:flex; align-items:center; gap:.5rem; }
+.skills__category-title::before { content:''; width:8px; height:8px; border-radius:2px; background:var(--secondary-color); flex-shrink:0; }
+
+.skill__card { margin-bottom:1.25rem; text-align:left; }
+.skill__card:last-child { margin-bottom:0; }
+.skill__info { display:flex; align-items:center; gap:.6rem; margin-bottom:.5rem; }
+.skill__info .skill__icon { font-size:.95rem; color:var(--secondary-color); width:28px; height:28px; display:flex; align-items:center; justify-content:center; background:var(--secondary-subtle); border-radius:6px; flex-shrink:0; }
+.skill__info h4 { font-size:.84rem; font-weight:500; flex-grow:1; color:var(--text-light); }
+.skill__percent { font-size:.78rem; font-weight:700; color:var(--secondary-color); }
+
+.skill__bar { height:5px; background:rgba(255,255,255,0.06); border-radius:999px; overflow:hidden; }
+.skill__progress { height:100%; background:linear-gradient(90deg,#ff4e05,#ff8c5a); border-radius:999px; width:0; transition:width 1.2s cubic-bezier(0.22,1,0.36,1); position:relative; overflow:hidden; }
+.skill__progress.animate { width: var(--target-width); }
+.skill__progress::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,0.3) 50%,transparent 70%); animation:skillShimmer 2.5s ease-in-out infinite; }
+@keyframes skillShimmer { 0%{transform:translateX(-150%)} 100%{transform:translateX(250%)} }

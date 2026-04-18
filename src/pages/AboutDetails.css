@@ -1,0 +1,10 @@
+/* ── ABOUT DETAILS PAGE ── */
+.about-details { background: var(--primary-color); min-height: 100vh; padding: 6rem 1.5rem 4rem; }
+.about-details__container {
+  max-width: var(--max-width); margin: auto;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+.about-details__content { color: var(--text-light); font-size: .9rem; line-height: 1.85; margin-bottom: 1.5rem; }
+.about-details__content strong { color: var(--secondary-color); font-weight: 600; }

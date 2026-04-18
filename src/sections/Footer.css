@@ -1,0 +1,24 @@
+/* ── FOOTER / CONTACT ── */
+.footer-section { background:var(--text-dark); position:relative; overflow:hidden; }
+.footer-section::before { content:''; position:absolute; bottom:-80px; right:-80px; width:350px; height:350px; border-radius:50%; background:radial-gradient(circle, rgba(255,78,5,0.07), transparent 70%); pointer-events:none; }
+
+.footer__container { display:grid; grid-template-columns:1fr; gap:3rem; }
+@media (min-width:768px) { .footer__container { grid-template-columns:1fr 1fr; } }
+
+.footer__content { display:flex; flex-direction:column; align-items:flex-start; gap:1rem; }
+.footer__content .section__title { text-align:left; }
+.footer__details { font-size:.82rem; color:var(--text-muted); line-height:1.7; display:grid; gap:.3rem; margin:.25rem 0; }
+
+.social__icons { display:flex; align-items:center; gap:.6rem; margin-top:.4rem; }
+.social__icons .icon { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border-radius:10px; color:var(--white); background:var(--secondary-color); font-size:1rem; transition:transform .3s var(--ease-out-back), box-shadow .3s ease; }
+.social__icons .icon:hover { transform:translateY(-4px) scale(1.1); box-shadow:0 8px 20px var(--secondary-glow); }
+
+.footer__form { display:grid; gap:1rem; }
+.footer__form input, .footer__form textarea { padding:.9rem 1.1rem; background:var(--surface); border:1px solid var(--border); outline:none; border-radius:8px; color:var(--white); font-family:"Poppins",sans-serif; font-size:.85rem; transition:border-color .25s, box-shadow .25s; }
+.footer__form input:focus, .footer__form textarea:focus { border-color:rgba(255,78,5,.5); box-shadow:0 0 0 3px rgba(255,78,5,.1); }
+.footer__form input::placeholder, .footer__form textarea::placeholder { color:var(--text-muted); }
+.footer__form textarea { resize:vertical; min-height:130px; }
+.footer__form button { width:max-content; }
+
+.footer__bottom { border-top:1px solid var(--border); padding:1.2rem 1.5rem; display:flex; align-items:center; justify-content:center; font-size:.73rem; color:var(--text-muted); }
+.footer__bottom span { color:var(--secondary-color); margin:0 .25rem; }

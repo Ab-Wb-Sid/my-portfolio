@@ -1,0 +1,28 @@
+/* ── CUSTOM CURSOR ── */
+.cursor__dot {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--secondary-color);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s;
+}
+
+.cursor__ring {
+  position: fixed; top: 0; left: 0; z-index: 9998;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid rgba(255, 78, 5, 0.5);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease-out-back), height 0.3s var(--ease-out-back), border-color 0.3s;
+}
+
+.cursor__ring.hovering {
+  width: 52px; height: 52px;
+  border-color: var(--secondary-color);
+  background: rgba(255, 78, 5, 0.06);
+}
+
+@media (max-width: 768px) {
+  .cursor__dot, .cursor__ring { display: none; }
+}
