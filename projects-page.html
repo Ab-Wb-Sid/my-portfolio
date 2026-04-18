@@ -10,6 +10,14 @@
     <style>
       /* ── Page-specific styles for projects-page.html ── */
 
+      /* project description paragraph */
+      .pcard__desc {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        line-height: 1.75;
+        margin-top: 0.5rem;
+      }
+
       /* Hero banner */
       .projects-hero {
         background-image: url("assets/header-bg.png");
@@ -490,14 +498,14 @@
       </div>
 
       <div class="nav__social">
-        <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank">
-          <i class="ri-instagram-line"></i>
+        <a href="https://github.com/Ab-Wb-Sid" class="icon" target="_blank" title="GitHub">
+          <i class="ri-github-line"></i>
         </a>
-        <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank">
-          <i class="ri-mail-line"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" class="icon" target="_blank">
+        <a href="https://linkedin.com/in/abdulwahabsiddiqi" class="icon" target="_blank" title="LinkedIn">
           <i class="ri-linkedin-fill"></i>
+        </a>
+        <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank" title="Email">
+          <i class="ri-mail-line"></i>
         </a>
       </div>
 
@@ -546,10 +554,7 @@
                 <span class="dot"></span> In Progress
               </div>
               <h2 class="pcard__title">AI Automation Workflow Builder for SMEs</h2>
-              <ul class="pcard__bullets">
-                <li>Building an <strong>AI-powered automation hub</strong> in Python that processes inbound messages, generates GPT-based replies and PDF quotations, and logs records to Google Sheets — targeting a <strong>~60% reduction</strong> in manual SME workflows.</li>
-                <li>Leading end-to-end product design including <strong>system architecture</strong>, API integration planning, and a 3-phase development roadmap (prototype → live integrations → multi-tenant SaaS); currently advancing to Node.js/Express.js backend implementation.</li>
-              </ul>
+              <p class="pcard__desc">An AI-powered automation hub built in Python — processing inbound messages, generating GPT-based replies and PDF quotations, and logging records to Google Sheets. Targeting a ~60% reduction in manual SME workflows.</p>
             </div>
 
             <div class="pcard__tech">
@@ -570,16 +575,13 @@
                 <span class="pcard__progress-label" style="min-width:2.5rem;">45%</span>
               </div>
               <div class="pcard__links">
-                <a href="#" class="pcard__link" title="GitHub"><i class="ri-github-line"></i></a>
-                <a href="#" class="pcard__link" title="Live Demo"><i class="ri-external-link-line"></i></a>
+                <a href="https://github.com/Ab-Wb-Sid/AI-Automation-Workflow-Builder" class="pcard__link" title="GitHub" target="_blank"><i class="ri-github-line"></i></a>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- ────────────────────────────────────────
-             PROJECT 2 — Plagiarism Detection System
-        ──────────────────────────────────────── -->
+        <!-- PROJECT 2 — Plagiarism Detection System -->
         <article class="pcard pcard--reverse">
           <div class="pcard__image pcard__image--placeholder">
             <div class="placeholder__deco"></div>
@@ -594,10 +596,7 @@
                 <span class="dot"></span> Completed
               </div>
               <h2 class="pcard__title">Plagiarism Detection System</h2>
-              <ul class="pcard__bullets">
-                <li>Built a <strong>C++ detection engine</strong> using 5+ NLP techniques — tokenization, stemming, cosine similarity, and Rabin-Karp n-gram hashing — to identify exact and semantically similar passages at word, phrase, and sentence level.</li>
-                <li>Produced <strong>color-coded severity reports</strong> with customizable thresholds, delivering structured, data-driven output across 3 levels of granularity.</li>
-              </ul>
+              <p class="pcard__desc">A C++ detection engine using 5+ NLP techniques — tokenization, stemming, cosine similarity, and Rabin-Karp n-gram hashing — producing color-coded severity reports across 3 levels of granularity.</p>
             </div>
 
             <div class="pcard__tech">
@@ -619,10 +618,6 @@
               </div>
               <div style="display:flex;align-items:center;gap:1rem;">
                 <span class="pcard__year">2025</span>
-                <div class="pcard__links">
-                  <a href="#" class="pcard__link" title="GitHub"><i class="ri-github-line"></i></a>
-                  <a href="#" class="pcard__link" title="Live Demo"><i class="ri-external-link-line"></i></a>
-                </div>
               </div>
             </div>
           </div>
@@ -645,10 +640,7 @@
                 <span class="dot"></span> Completed
               </div>
               <h2 class="pcard__title">Ping-Pong Game</h2>
-              <ul class="pcard__bullets">
-                <li>Engineered a <strong>real-time two-player arcade game</strong> using JavaFX animation timelines and custom collision detection logic — delivering smooth, responsive gameplay at a locked 60fps.</li>
-                <li>Implemented complete <strong>game state management</strong>, scorekeeping logic, and a fluid rendering pipeline for a polished, low-latency player experience.</li>
-              </ul>
+              <p class="pcard__desc">A real-time two-player arcade game built with JavaFX — featuring animation timelines, collision detection logic, game state management, scorekeeping, and smooth 60fps rendering.</p>
             </div>
 
             <div class="pcard__tech">
@@ -670,8 +662,7 @@
               <div style="display:flex;align-items:center;gap:1rem;">
                 <span class="pcard__year">2024</span>
                 <div class="pcard__links">
-                  <a href="#" class="pcard__link" title="GitHub"><i class="ri-github-line"></i></a>
-                  <a href="#" class="pcard__link" title="Live Demo"><i class="ri-external-link-line"></i></a>
+                  <a href="https://github.com/Ab-Wb-Sid/OOP-Project-JavaFX" class="pcard__link" title="GitHub" target="_blank"><i class="ri-github-line"></i></a>
                 </div>
               </div>
             </div>
@@ -693,10 +684,10 @@
             <p>Shad Bagh, Lahore, Pakistan</p>
           </div>
           <div class="social__icons">
-            <a href="#" class="icon"><i class="ri-facebook-fill"></i></a>
-            <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank"><i class="ri-mail-line"></i></a>
-            <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank"><i class="ri-instagram-line"></i></a>
-            <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" class="icon" target="_blank"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://github.com/Ab-Wb-Sid" class="icon" target="_blank" title="GitHub"><i class="ri-github-line"></i></a>
+            <a href="https://linkedin.com/in/abdulwahabsiddiqi" class="icon" target="_blank" title="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" class="icon" target="_blank" title="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="mailto:aw1411175@gmail.com" class="icon" target="_blank" title="Email"><i class="ri-mail-line"></i></a>
           </div>
         </div>
         <form class="footer__form" action="https://formspree.io/f/xdkazezp" method="POST">
