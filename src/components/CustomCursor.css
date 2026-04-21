@@ -1,28 +1,23 @@
 /* ── CUSTOM CURSOR ── */
-.cursor__dot {
+.cursor__arrow {
   position: fixed; top: 0; left: 0; z-index: 9999;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--secondary-color);
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s;
+  /* Shift so the tip of the arrow aligns with the pointer */
+  margin-top: -2.5px;
+  margin-left: -2.5px;
 }
 
-.cursor__ring {
-  position: fixed; top: 0; left: 0; z-index: 9998;
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 1.5px solid rgba(255, 78, 5, 0.5);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--ease-out-back), height 0.3s var(--ease-out-back), border-color 0.3s;
+.cursor__arrow svg {
+  transition: transform 0.25s var(--ease-out-back), filter 0.25s;
+  transform-origin: 2.5px 2.5px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
 }
 
-.cursor__ring.hovering {
-  width: 52px; height: 52px;
-  border-color: var(--secondary-color);
-  background: rgba(255, 78, 5, 0.06);
+.cursor__arrow.hovering svg {
+  transform: scale(1.15) rotate(-8deg);
+  filter: drop-shadow(0 0 10px var(--secondary-glow));
 }
 
 @media (max-width: 768px) {
-  .cursor__dot, .cursor__ring { display: none; }
+  .cursor__arrow { display: none; }
 }

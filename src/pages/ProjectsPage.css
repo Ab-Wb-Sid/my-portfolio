@@ -36,7 +36,13 @@
 .projects-hero__sub { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
 
 /* Full section */
-.projects-full { background-color: var(--primary-color); padding: 4rem 1rem 6rem; }
+.projects-full { 
+  background-color: var(--primary-color); 
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative; 
+  padding: 4rem 1rem 6rem; 
+}
 .projects-full__inner { max-width: var(--max-width); margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
 
 /* Back button */

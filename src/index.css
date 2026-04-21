@@ -93,3 +93,10 @@ a { text-decoration: none; color: var(--white); }
   .section__container { padding: 3.5rem 1.2rem; }
   .section__title { font-size: 1.8rem; }
 }
+
+/* ── HIDE SYSTEM CURSOR ON DESKTOP ── */
+@media (min-width: 769px) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}

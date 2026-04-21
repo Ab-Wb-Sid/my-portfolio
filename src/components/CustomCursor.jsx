@@ -2,36 +2,33 @@ import { useEffect, useRef } from 'react'
 import './CustomCursor.css'
 
 export default function CustomCursor() {
-  const dotRef = useRef(null)
-  const ringRef = useRef(null)
-  const pos = useRef({ dotX: 0, dotY: 0, ringX: 0, ringY: 0 })
+  const cursorRef = useRef(null)
+  const pos = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 })
 
   useEffect(() => {
-    const dot = dotRef.current
-    const ring = ringRef.current
-    if (!dot || !ring) return
+    const cursor = cursorRef.current
+    if (!cursor) return
 
     const onMove = (e) => {
-      pos.current.dotX = e.clientX
-      pos.current.dotY = e.clientY
-      dot.style.left = e.clientX + 'px'
-      dot.style.top = e.clientY + 'px'
+      pos.current.targetX = e.clientX
+      pos.current.targetY = e.clientY
     }
 
     let rafId
-    const animRing = () => {
-      pos.current.ringX += (pos.current.dotX - pos.current.ringX) * 0.12
-      pos.current.ringY += (pos.current.dotY - pos.current.ringY) * 0.12
-      ring.style.left = pos.current.ringX + 'px'
-      ring.style.top = pos.current.ringY + 'px'
-      rafId = requestAnimationFrame(animRing)
+    const anim = () => {
+      // Smooth interpolation for the arrowhead
+      pos.current.x += (pos.current.targetX - pos.current.x) * 0.35
+      pos.current.y += (pos.current.targetY - pos.current.y) * 0.35
+      
+      cursor.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px)`
+      rafId = requestAnimationFrame(anim)
     }
 
     document.addEventListener('mousemove', onMove)
-    rafId = requestAnimationFrame(animRing)
+    rafId = requestAnimationFrame(anim)
 
-    const addHover = () => ring.classList.add('hovering')
-    const removeHover = () => ring.classList.remove('hovering')
+    const addHover = () => cursor.classList.add('hovering')
+    const removeHover = () => cursor.classList.remove('hovering')
 
     const observer = new MutationObserver(() => {
       document.querySelectorAll('a, button, .service__card, .project__preview__card, .skills__category, .pcard').forEach(el => {
@@ -51,9 +48,10 @@ export default function CustomCursor() {
   }, [])
 
   return (
-    <>
-      <div className="cursor__dot" ref={dotRef} />
-      <div className="cursor__ring" ref={ringRef} />
-    </>
+    <div className="cursor__arrow" ref={cursorRef}>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 2.5L23.5 10.5L13.5 13.5L10.5 24.5L2.5 2.5Z" fill="var(--secondary-color)" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    </div>
   )
 }

@@ -64,7 +64,7 @@ function getSVGPath(svg, color) {
 /* draw sphere wireframe (geodesic look) */
 function drawWireframe(ctx, cx, cy, r) {
   ctx.save()
-  ctx.strokeStyle = 'rgba(255,78,5,0.08)' // slightly fainter to let bold logos pop
+  ctx.strokeStyle = 'rgba(255,78,5,0.25)' // stronger visible color
   ctx.lineWidth = 0.8
 
   const latLines = 8
@@ -195,7 +195,7 @@ function SkillSphere({ skills }) {
         const px = cx + it.x * r
         const py = cy + it.y * r
         
-        const opacity = Math.max(0.12, (it.z + 1.2) / 2.2)
+        const opacity = Math.max(0.4, (it.z + 1.5) / 2.5)
         const iconSize = Math.round(44 * scale) // larger standalone icons like in the reference image
         const fontSize = Math.round(11 * scale)
 
@@ -210,7 +210,7 @@ function SkillSphere({ skills }) {
 
         // Draw Label Text
         ctx.save()
-        ctx.globalAlpha = opacity * 0.95
+        ctx.globalAlpha = opacity
         ctx.font = `600 ${Math.max(9, fontSize)}px 'Poppins', sans-serif`
         ctx.fillStyle = '#ffffff'
         ctx.shadowColor = '#000000'

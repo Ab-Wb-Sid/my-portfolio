@@ -1,5 +1,11 @@
 /* ── PROJECTS PREVIEW ── */
-.project { background:var(--primary-color); position:relative; overflow:hidden; }
+.project { 
+  background-color: var(--primary-color);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative; 
+  overflow: hidden; 
+}
 .project::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:400px; background:radial-gradient(ellipse, rgba(255,78,5,0.04), transparent 70%); pointer-events:none; }
 .project__container { text-align:center; }
 
