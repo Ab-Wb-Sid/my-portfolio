@@ -49,9 +49,7 @@ export default function Navbar() {
   return (
     <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
       <div className="nav__logo">
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          Cod<span>e</span>r.
-        </Link>
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>AW<span>S</span>.</Link>
       </div>
 
       <div className={`nav__links ${menuOpen ? 'active' : ''}`}>
