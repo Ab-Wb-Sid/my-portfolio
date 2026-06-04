@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { RiInstagramLine, RiMailLine, RiLinkedinFill, RiMenuLine, RiCloseLine } from 'react-icons/ri'
+import { RiCloseLine, RiGithubFill, RiMenuLine, RiStarLine } from 'react-icons/ri'
 import './Navbar.css'
 
 const navItems = [
@@ -65,9 +65,28 @@ export default function Navbar() {
         ))}
       </div>
 
-      <button className="nav__toggle" onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <RiCloseLine /> : <RiMenuLine />}
-      </button>
+      <div className="nav__actions">
+        <a
+          className="nav__repo"
+          href="https://github.com/Ab-Wb-Sid/my-portfolio"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Star this portfolio repository on GitHub"
+        >
+          <RiGithubFill />
+          <span>Star repo</span>
+          <RiStarLine className="nav__repo-star" />
+        </a>
+
+        <button
+          className={`nav__toggle ${menuOpen ? 'active' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        >
+          {menuOpen ? <RiCloseLine /> : <RiMenuLine />}
+        </button>
+      </div>
     </nav>
   )
 }

@@ -77,6 +77,10 @@
   color: inherit;
 }
 
+.social-tab-arrow svg {
+  transition: transform 0.3s;
+}
+
 /* Open states */
 .social-tab-container.open .social-tab-panel {
   transform: translateX(0);
@@ -84,6 +88,10 @@
 
 .social-tab-container.open .social-tab-trigger {
   transform: translateX(76px);
+}
+
+.social-tab-container.open .social-tab-arrow svg {
+  transform: rotate(180deg);
 }
 
 /* Staggered Pop-in animations for links when open */
@@ -128,13 +136,57 @@
 .social-tab-container.open .social-tab-links a:nth-child(3) { transition-delay: 0.24s; }
 
 /* Responsive Adjustments */
+@media (max-width: 768px) {
+  .social-tab-container {
+    left: auto;
+    right: 0;
+  }
+
+  .social-tab-panel {
+    left: auto;
+    right: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+    transform: translateX(100%);
+  }
+
+  .social-tab-trigger {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .social-tab-trigger:hover {
+    box-shadow: -4px 0 20px var(--secondary-glow);
+  }
+
+  .social-tab-container.open .social-tab-trigger {
+    transform: translateX(-76px);
+  }
+
+  .social-tab-links a {
+    transform: scale(0.8) translateX(15px);
+  }
+
+  .social-tab-arrow svg {
+    transform: rotate(180deg);
+  }
+
+  .social-tab-container.open .social-tab-arrow svg {
+    transform: rotate(0deg);
+  }
+}
+
 @media (max-width: 600px) {
   .social-tab-panel {
     width: 66px;
     padding: 1rem 0.75rem;
   }
   .social-tab-container.open .social-tab-trigger {
-    transform: translateX(66px);
+    transform: translateX(-66px);
   }
   .social-tab-trigger {
     padding: 0.8rem 0.4rem;

@@ -53,7 +53,7 @@ export default function SocialSidebar() {
       >
         <span className="social-tab-text">SOCIALS</span>
         <div className="social-tab-arrow">
-          <RiArrowRightSLine style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }} />
+          <RiArrowRightSLine />
         </div>
       </button>
     </div>
