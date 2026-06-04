@@ -106,3 +106,44 @@
 @media (max-width:640px) {
   .hero__container { padding: 68px 1.2rem 2rem; }
 }
+
+/* ── Say Hello Button Hover Fill Animation ── */
+.btn--say-hello {
+  background: transparent !important;
+  border: 2px solid var(--secondary-color) !important;
+  color: var(--secondary-color) !important;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.4s ease, transform 0.3s var(--ease-out-back), box-shadow 0.3s ease !important;
+}
+
+.btn--say-hello::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background: var(--secondary-color);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1), border-radius 0.45s ease;
+  border-radius: 0 50% 50% 0;
+}
+
+.btn--say-hello:hover {
+  color: var(--white) !important;
+  box-shadow: 0 10px 25px var(--secondary-glow) !important;
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn--say-hello:hover::before {
+  transform: scaleX(1);
+  border-radius: 0;
+}
+
+.btn--say-hello:active {
+  transform: translateY(-1px) scale(0.98);
+}

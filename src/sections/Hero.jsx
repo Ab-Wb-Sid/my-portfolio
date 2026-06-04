@@ -124,6 +124,85 @@ export default function Hero() {
   const { displayed } = useTypingEffect(typingText)
   const [helloOpen, setHelloOpen] = useState(false)
 
+  // Form states
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [errors, setErrors] = useState({ name: '', email: '' })
+  const [touched, setTouched] = useState({ name: false, email: false })
+  const [submitStatus, setSubmitStatus] = useState('idle') // idle | submitting | success | error
+
+  // Input change handler
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    if (touched[name]) {
+      validateField(name, value)
+    }
+  }
+
+  // Input blur handler
+  const handleBlur = (e) => {
+    const { name, value } = e.target
+    setTouched(prev => ({ ...prev, [name]: true }))
+    validateField(name, value)
+  }
+
+  // Field validation
+  const validateField = (name, value) => {
+    let errorMsg = ''
+    if (name === 'name') {
+      if (!value.trim()) {
+        errorMsg = 'Full Name is required'
+      }
+    } else if (name === 'email') {
+      if (!value.trim()) {
+        errorMsg = 'Email Address is required'
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        errorMsg = 'Please enter a valid email address'
+      }
+    }
+    setErrors(prev => ({ ...prev, [name]: errorMsg }))
+    return errorMsg
+  }
+
+  // Form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const nameError = validateField('name', formData.name)
+    const emailError = validateField('email', formData.email)
+    setTouched({ name: true, email: true })
+
+    if (nameError || emailError) {
+      return
+    }
+
+    setSubmitStatus('submitting')
+    try {
+      const res = await fetch('https://formspree.io/f/xdkazezp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      })
+
+      if (res.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        setTouched({ name: false, email: false })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch {
+      setSubmitStatus('error')
+    }
+  }
+
   return (
     <header id="home" className="hero" style={{ backgroundImage: `url(${headerBg})` }}>
       <Particles />
@@ -145,7 +224,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div className="action__btns" custom={4} variants={fadeUp} initial="hidden" animate="visible">
-          <button className="btn" onClick={() => setHelloOpen(true)}>
+          <button className="btn btn--say-hello" onClick={() => setHelloOpen(true)}>
             <RiHandHeartLine /> Say Hello
           </button>
           <a href="#" className="video">
@@ -164,9 +243,81 @@ export default function Hero() {
         ))}
       </motion.div>
 
-      <Modal open={helloOpen} onClose={() => setHelloOpen(false)}>
-        <h2>Hello! 👋</h2>
-        <p>Welcome to my portfolio! I'm Abdul Wahab, a Software Engineer passionate about building great things. Feel free to explore and get in touch!</p>
+      <Modal open={helloOpen} onClose={() => { setHelloOpen(false); setSubmitStatus('idle'); }}>
+        <div className="contact-modal">
+          <h2>Hello 👋</h2>
+          <p className="contact-modal__subtitle">Feel free to explore my portfolio and get in touch.</p>
+
+          {submitStatus === 'success' ? (
+            <div className="contact-modal__success">
+              <div className="success-icon">✓</div>
+              <h3>Thank You!</h3>
+              <p>Your message has been sent successfully. I'll get back to you soon.</p>
+              <button className="btn" onClick={() => { setHelloOpen(false); setSubmitStatus('idle'); }}>Close</button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} noValidate className="contact-modal__form">
+              <div className={`form-group ${touched.name ? (errors.name ? 'has-error' : 'has-success') : ''}`}>
+                <label htmlFor="modal-name">Full Name <span className="required">*</span></label>
+                <input
+                  type="text"
+                  id="modal-name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Enter your full name"
+                  disabled={submitStatus === 'submitting'}
+                  required
+                />
+                {touched.name && errors.name && <span className="error-message" role="alert">{errors.name}</span>}
+              </div>
+
+              <div className={`form-group ${touched.email ? (errors.email ? 'has-error' : 'has-success') : ''}`}>
+                <label htmlFor="modal-email">Email Address <span className="required">*</span></label>
+                <input
+                  type="email"
+                  id="modal-email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Enter your email address"
+                  disabled={submitStatus === 'submitting'}
+                  required
+                />
+                {touched.email && errors.email && <span className="error-message" role="alert">{errors.email}</span>}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="modal-message">Message</label>
+                <textarea
+                  id="modal-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project..."
+                  rows="4"
+                  disabled={submitStatus === 'submitting'}
+                />
+              </div>
+
+              {submitStatus === 'error' && (
+                <div className="submit-error-message" role="alert">
+                  Failed to send message. Please try again.
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="btn btn--submit"
+                disabled={submitStatus === 'submitting'}
+              >
+                {submitStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
+          )}
+        </div>
       </Modal>
     </header>
   )
