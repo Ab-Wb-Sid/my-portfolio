@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
+import SocialSidebar from './components/SocialSidebar'
 import CustomCursor from './components/CustomCursor'
 import Home from './pages/Home'
 import ProjectsPage from './pages/ProjectsPage'
@@ -41,6 +42,7 @@ export default function App() {
     <>
       <CustomCursor />
       <Navbar />
+      <SocialSidebar />
       <ScrollToHash />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>

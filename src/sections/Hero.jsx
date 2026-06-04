@@ -128,29 +128,23 @@ export default function Hero() {
     <header id="home" className="hero" style={{ backgroundImage: `url(${headerBg})` }}>
       <Particles />
       <div className="hero__container">
-        <motion.div className="hero__badge" custom={0} variants={fadeUp} initial="hidden" animate="visible">
-          <span className="dot" />
-          Available for opportunities
-        </motion.div>
-
-        <motion.p custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)', marginBottom: '0.2rem' }}>
+        <motion.p className="hero__greeting" custom={0} variants={fadeUp} initial="hidden" animate="visible">
           Hello, I'm
         </motion.p>
 
-        <motion.h1 custom={2} variants={fadeUp} initial="hidden" animate="visible">
+        <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible">
           Abdul Wahab<br />Siddiqi
         </motion.h1>
 
-        <motion.h2 className="section__title" custom={3} variants={fadeUp} initial="hidden" animate="visible">
+        <motion.h2 className="section__title" custom={2} variants={fadeUp} initial="hidden" animate="visible">
           Software <span>Engineer.</span>
         </motion.h2>
 
-        <motion.p className="hero__typing" custom={4} variants={fadeUp} initial="hidden" animate="visible">
+        <motion.p className="hero__typing" custom={3} variants={fadeUp} initial="hidden" animate="visible">
           {displayed}<span className="typing-cursor" />
         </motion.p>
 
-        <motion.div className="action__btns" custom={5} variants={fadeUp} initial="hidden" animate="visible">
+        <motion.div className="action__btns" custom={4} variants={fadeUp} initial="hidden" animate="visible">
           <button className="btn" onClick={() => setHelloOpen(true)}>
             <RiHandHeartLine /> Say Hello
           </button>
@@ -161,18 +155,13 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <motion.div className="hero__stats" custom={6} variants={fadeUp} initial="hidden" animate="visible">
+      <motion.div className="hero__stats" custom={5} variants={fadeUp} initial="hidden" animate="visible">
         {stats.map(s => (
           <div className="hero__stat" key={s.label}>
             <div className="hero__stat-num"><AnimatedCounter target={s.num} /></div>
             <div className="hero__stat-label">{s.label}</div>
           </div>
         ))}
-      </motion.div>
-
-      <motion.div className="scroll-indicator" custom={7} variants={fadeUp} initial="hidden" animate="visible">
-        <span>Scroll</span>
-        <div className="scroll-indicator__line" />
       </motion.div>
 
       <Modal open={helloOpen} onClose={() => setHelloOpen(false)}>

@@ -37,16 +37,14 @@
   margin: 0 auto;
 }
 
-.hero__badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--secondary-color);
-  background: rgba(255,78,5,0.1); border: 1px solid rgba(255,78,5,0.3);
-  padding: 0.35rem 1rem; border-radius: 999px;
-  margin-bottom: 0.9rem;
+.hero__greeting {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 10px rgba(255, 78, 5, 0.15);
 }
-.hero__badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--secondary-color); animation: blink 1.5s ease infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.15} }
 
 .hero__container h1 {
   font-size: clamp(2.8rem, 7vw, 5.5rem);
@@ -88,15 +86,6 @@
 @keyframes ripple { 0%{transform:scale(1);opacity:.8} 100%{transform:scale(2.2);opacity:0} }
 .action__btns .video:hover .play { transform: scale(1.1); box-shadow: 0 6px 20px var(--secondary-glow); }
 .action__btns .video span { font-size: 0.9rem; font-weight: 600; }
-
-/* scroll indicator */
-.scroll-indicator {
-  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-  z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-}
-.scroll-indicator span { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-.scroll-indicator__line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--secondary-color), transparent); animation: scrollLine 2s ease-in-out infinite; }
-@keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
 
 /* hero stats */
 .hero__stats {

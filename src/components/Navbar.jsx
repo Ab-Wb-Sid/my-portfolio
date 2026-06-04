@@ -65,18 +65,6 @@ export default function Navbar() {
         ))}
       </div>
 
-      <div className="nav__social">
-        <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" className="icon" target="_blank" rel="noreferrer">
-          <RiInstagramLine />
-        </a>
-        <a href="mailto:aw1411175@gmail.com" className="icon" target="_blank" rel="noreferrer">
-          <RiMailLine />
-        </a>
-        <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" className="icon" target="_blank" rel="noreferrer">
-          <RiLinkedinFill />
-        </a>
-      </div>
-
       <button className="nav__toggle" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <RiCloseLine /> : <RiMenuLine />}
       </button>
