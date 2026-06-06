@@ -1,59 +1,73 @@
-/* ── CUSTOM TRAILING CURSOR ── */
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--secondary-color);
-  border-radius: 50%;
+/* ── CUSTOM PAPER PLANE CURSOR ── */
+
+/* Hide standard cursor on clickable items */
+@media (min-width: 769px) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+/* Sleek paper plane container */
+.cursor-plane-container {
   position: fixed;
   top: 0;
   left: 0;
+  width: 28px;
+  height: 28px;
   pointer-events: none;
   z-index: 9999;
   transform: translate3d(-50%, -50%, 0);
-  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-  margin-top: -4px;
-  margin-left: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
 }
 
-.cursor-ring {
-  width: 38px;
-  height: 38px;
-  border: 1.5px solid var(--secondary-color);
-  border-radius: 50%;
+/* Paper plane SVG styling */
+.cursor-plane {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* Left and right wing shading for 3D depth */
+.plane-wing-left {
+  fill: rgba(255, 78, 5, 0.95);
+  stroke: var(--white);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  transition: fill 0.3s ease;
+}
+
+.plane-wing-right {
+  fill: rgba(210, 50, 0, 0.95);
+  stroke: var(--white);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  transition: fill 0.3s ease;
+}
+
+/* Trail wind dashes */
+.cursor-trail-particle {
   position: fixed;
   top: 0;
   left: 0;
+  width: 12px;
+  height: 1.5px;
+  border-radius: 999px;
   pointer-events: none;
   z-index: 9998;
   transform: translate3d(-50%, -50%, 0);
-  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-              height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-              border-color 0.3s ease, 
-              background-color 0.3s ease;
-  margin-top: -19px;
-  margin-left: -19px;
-  box-shadow: 0 0 10px rgba(255, 78, 5, 0.15);
-}
-
-/* Hover States on clickable items */
-.cursor-dot.hover {
-  width: 6px;
-  height: 6px;
-  background-color: var(--white);
-}
-
-.cursor-ring.hover {
-  width: 54px;
-  height: 54px;
-  border-color: var(--secondary-color);
-  background-color: rgba(255, 78, 5, 0.1);
-  box-shadow: 0 0 20px rgba(255, 78, 5, 0.4);
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 6px var(--secondary-color);
+  will-change: transform;
 }
 
 /* Hide cursor on touch devices */
 @media (max-width: 1024px) {
-  .cursor-dot,
-  .cursor-ring {
-    display: none;
+  .cursor-plane-container,
+  .cursor-trail-particle {
+    display: none !important;
   }
 }
