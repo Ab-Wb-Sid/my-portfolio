@@ -17,7 +17,7 @@
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(255,78,5,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,78,5,0.22) 0%, transparent 70%);
   pointer-events: none;
   border-radius: 50%;
 }
@@ -74,7 +74,7 @@
 
 .skills__tab:active { transform: scale(0.96); }
 
-/* ── Sphere canvas wrapper ── */
+/* ── Sphere container wrapper with ambient glow ── */
 .sphere__container {
   display: flex;
   justify-content: center;
@@ -83,9 +83,23 @@
   max-width: 480px;
   aspect-ratio: 1;
   margin: 0 auto;
-  filter: drop-shadow(0 0 40px rgba(255,78,5,0.12));
   overflow: visible; /* Allows tooltip to overflow container slightly */
   position: relative;
+}
+
+.sphere__container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 78, 5, 0.22) 0%, rgba(255, 78, 5, 0.04) 50%, transparent 70%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .sphere-node {

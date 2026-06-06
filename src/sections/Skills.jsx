@@ -4,17 +4,17 @@ import './Skills.css'
 
 /* ── SKILL DATA ── */
 const technicalSkills = [
-  { name: 'Python',      deviconClass: 'devicon-python-plain',                 level: 'Advanced',     experience: '3+ Years', projects: '12', color: '#3776AB', emoji: '🐍' },
-  { name: 'C',           deviconClass: 'devicon-c-plain',                      level: 'Intermediate', experience: '2 Years',   projects: '5',  color: '#A8B9CC', emoji: '💻' },
-  { name: 'C++',         deviconClass: 'devicon-cplusplus-plain',              level: 'Intermediate', experience: '2 Years',   projects: '6',  color: '#00599C', emoji: '⚙️' },
-  { name: 'Java',        deviconClass: 'devicon-java-plain',                   level: 'Intermediate', experience: '1.5 Years', projects: '4',  color: '#ED8B00', emoji: '☕' },
-  { name: 'SQL Server',  deviconClass: 'devicon-microsoftsqlserver-plain',     level: 'Advanced',     experience: '3 Years',   projects: '10', color: '#CC2927', emoji: '💾' },
-  { name: 'MySQL',       deviconClass: 'devicon-mysql-plain',                  level: 'Advanced',     experience: '3 Years',   projects: '8',  color: '#4479A1', emoji: '🐬' },
-  { name: 'Django',      deviconClass: 'devicon-django-plain',                 level: 'Intermediate', experience: '2 Years',   projects: '6',  color: '#092E20', emoji: '🦄' },
-  { name: 'HTML',        deviconClass: 'devicon-html5-plain',                  level: 'Advanced',     experience: '4 Years',   projects: '20', color: '#E34F26', emoji: '🌐' },
-  { name: 'CSS',         deviconClass: 'devicon-css3-plain',                   level: 'Advanced',     experience: '4 Years',   projects: '20', color: '#1572B6', emoji: '🎨' },
+  { name: 'Python',      deviconClass: 'devicon-python-plain',                 level: 'Advanced',     experience: '3+ Years', projects: '12', color: '#4B8BBE', emoji: '🐍' },
+  { name: 'C',           deviconClass: 'devicon-c-plain',                      level: 'Intermediate', experience: '2 Years',   projects: '5',  color: '#B0BEC5', emoji: '💻' },
+  { name: 'C++',         deviconClass: 'devicon-cplusplus-plain',              level: 'Intermediate', experience: '2 Years',   projects: '6',  color: '#64B5F6', emoji: '⚙️' },
+  { name: 'Java',        deviconClass: 'devicon-java-plain',                   level: 'Intermediate', experience: '1.5 Years', projects: '4',  color: '#FFA726', emoji: '☕' },
+  { name: 'SQL Server',  deviconClass: 'devicon-microsoftsqlserver-plain',     level: 'Advanced',     experience: '3 Years',   projects: '10', color: '#E63946', emoji: '💾' },
+  { name: 'MySQL',       deviconClass: 'devicon-mysql-plain',                  level: 'Advanced',     experience: '3 Years',   projects: '8',  color: '#33B5E5', emoji: '🐬' },
+  { name: 'Django',      deviconClass: 'devicon-django-plain',                 level: 'Intermediate', experience: '2 Years',   projects: '6',  color: '#10B981', emoji: '🦄' },
+  { name: 'HTML',        deviconClass: 'devicon-html5-plain',                  level: 'Advanced',     experience: '4 Years',   projects: '20', color: '#FF7043', emoji: '🌐' },
+  { name: 'CSS',         deviconClass: 'devicon-css3-plain',                   level: 'Advanced',     experience: '4 Years',   projects: '20', color: '#29B6F6', emoji: '🎨' },
   { name: 'JavaScript',  deviconClass: 'devicon-javascript-plain',             level: 'Advanced',     experience: '3 Years',   projects: '15', color: '#F7DF1E', emoji: '⚡' },
-  { name: 'Git',         deviconClass: 'devicon-git-plain',                    level: 'Advanced',     experience: '4 Years',   projects: '25', color: '#F05032', emoji: '🌿' },
+  { name: 'Git',         deviconClass: 'devicon-git-plain',                    level: 'Advanced',     experience: '4 Years',   projects: '25', color: '#FF7043', emoji: '🌿' },
   { name: 'GitHub',      deviconClass: 'devicon-github-original',              level: 'Advanced',     experience: '4 Years',   projects: '25', color: '#ffffff', emoji: '🐙' },
   { name: 'n8n',         icon: '/skills/n8n.svg',                              level: 'Advanced',     experience: '1.5 Years', projects: '8',  color: '#EA4B71', emoji: '🔗' },
 ]
@@ -118,7 +118,7 @@ function SkillSphere({ skills }) {
           const px = cx + it.x * r
           const py = cy + it.y * r
           const opacity = Math.max(0.22, (it.z + 1.5) / 2.5)
-          const zIndex = Math.round((it.z + 1) * 100)
+          const zIndex = Math.round((it.z + 1) * 100) + 10
 
           el.style.left = `${px}px`
           el.style.top = `${py}px`
@@ -208,7 +208,7 @@ function SkillSphere({ skills }) {
               rx={ry} 
               ry={ry * 0.22} 
               fill="none" 
-              stroke="rgba(255, 78, 5, 0.18)" 
+              stroke="rgba(255, 78, 5, 0.42)" 
               strokeWidth="0.8" 
             />
           )
@@ -223,7 +223,7 @@ function SkillSphere({ skills }) {
               rx={Math.sin(angle) * 180} 
               ry="180" 
               fill="none" 
-              stroke="rgba(255, 78, 5, 0.18)" 
+              stroke="rgba(255, 78, 5, 0.42)" 
               strokeWidth="0.8" 
               transform={`rotate(${(angle * 180) / Math.PI} 240 240)`} 
             />
@@ -255,7 +255,7 @@ function SkillSphere({ skills }) {
           onMouseLeave={() => setHoveredSkill(null)}
         >
           {skill.deviconClass ? (
-            <i className={`${skill.deviconClass} colored`} />
+            <i className={skill.deviconClass} style={{ color: skill.color }} />
           ) : (
             <img src={skill.icon} alt={skill.name} />
           )}
@@ -271,10 +271,12 @@ function SkillSphere({ skills }) {
             exit={{ opacity: 0, scale: 0.85, y: 10 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
             style={{ 
-              left: hoveredSkill.clientX - containerRef.current.getBoundingClientRect().left + 15, 
-              top: hoveredSkill.clientY - containerRef.current.getBoundingClientRect().top + 15,
+              position: 'fixed',
+              left: hoveredSkill.clientX + 15, 
+              top: hoveredSkill.clientY + 15,
               borderColor: hoveredSkill.skill.color + '40',
-              borderLeft: `4px solid ${hoveredSkill.skill.color}`
+              borderLeft: `4px solid ${hoveredSkill.skill.color}`,
+              zIndex: 99999
             }}
           >
             <div className="tooltip-title">

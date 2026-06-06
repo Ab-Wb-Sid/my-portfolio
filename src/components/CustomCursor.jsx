@@ -2,56 +2,77 @@ import { useEffect, useRef } from 'react'
 import './CustomCursor.css'
 
 export default function CustomCursor() {
-  const cursorRef = useRef(null)
-  const pos = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 })
+  const dotRef = useRef(null)
+  const ringRef = useRef(null)
+
+  const mousePos = useRef({ x: 0, y: 0 })
+  const dotPos = useRef({ x: 0, y: 0 })
+  const ringPos = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
-    const cursor = cursorRef.current
-    if (!cursor) return
+    const dot = dotRef.current
+    const ring = ringRef.current
+    if (!dot || !ring) return
 
     const onMove = (e) => {
-      pos.current.targetX = e.clientX
-      pos.current.targetY = e.clientY
+      mousePos.current.x = e.clientX
+      mousePos.current.y = e.clientY
     }
 
     let rafId
     const anim = () => {
-      // Smooth interpolation for the arrowhead
-      pos.current.x += (pos.current.targetX - pos.current.x) * 0.35
-      pos.current.y += (pos.current.targetY - pos.current.y) * 0.35
-      
-      cursor.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px)`
+      // Inner dot follows mouse closely
+      dotPos.current.x += (mousePos.current.x - dotPos.current.x) * 0.4
+      dotPos.current.y += (mousePos.current.y - dotPos.current.y) * 0.4
+
+      // Outer ring has a smooth delayed trail
+      ringPos.current.x += (mousePos.current.x - ringPos.current.x) * 0.15
+      ringPos.current.y += (mousePos.current.y - ringPos.current.y) * 0.15
+
+      dot.style.transform = `translate3d(${dotPos.current.x}px, ${dotPos.current.y}px, 0)`
+      ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0)`
+
       rafId = requestAnimationFrame(anim)
     }
 
-    document.addEventListener('mousemove', onMove)
+    window.addEventListener('mousemove', onMove)
     rafId = requestAnimationFrame(anim)
 
-    const addHover = () => cursor.classList.add('hovering')
-    const removeHover = () => cursor.classList.remove('hovering')
+    // Hover effect classes on clickable elements
+    const addHover = () => {
+      dot.classList.add('hover')
+      ring.classList.add('hover')
+    }
+    const removeHover = () => {
+      dot.classList.remove('hover')
+      ring.classList.remove('hover')
+    }
 
     const observer = new MutationObserver(() => {
-      document.querySelectorAll('a, button, .service__card, .project__preview__card, .skills__category, .pcard').forEach(el => {
+      const targets = document.querySelectorAll(
+        'a, button, .service__card, .project__preview__card, .skills__category, .pcard, .sphere-node, .social-icon, .skills__tab'
+      )
+      targets.forEach(el => {
         el.removeEventListener('mouseenter', addHover)
         el.removeEventListener('mouseleave', removeHover)
         el.addEventListener('mouseenter', addHover)
         el.addEventListener('mouseleave', removeHover)
       })
     })
+
     observer.observe(document.body, { childList: true, subtree: true })
 
     return () => {
-      document.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mousemove', onMove)
       cancelAnimationFrame(rafId)
       observer.disconnect()
     }
   }, [])
 
   return (
-    <div className="cursor__arrow" ref={cursorRef}>
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.5 2.5L23.5 10.5L13.5 13.5L10.5 24.5L2.5 2.5Z" fill="var(--secondary-color)" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round"/>
-      </svg>
-    </div>
+    <>
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+    </>
   )
 }
