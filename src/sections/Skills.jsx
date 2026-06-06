@@ -4,20 +4,19 @@ import './Skills.css'
 
 /* ── SKILL DATA ── */
 const technicalSkills = [
-  { name: 'Python',      icon: '/skills/python.svg',      level: 'Advanced',     experience: '3+ Years', projects: '12 Projects', color: '#3776AB', emoji: '🐍' },
-  { name: 'C',           icon: '/skills/c.svg',           level: 'Intermediate', experience: '2 Years',   projects: '5 Projects',  color: '#A8B9CC', emoji: '💻' },
-  { name: 'C++',         icon: '/skills/cpp.svg',         level: 'Intermediate', experience: '2 Years',   projects: '6 Projects',  color: '#00599C', emoji: '⚙️' },
-  { name: 'Java',        icon: '/skills/java.svg',        level: 'Intermediate', experience: '1.5 Years', projects: '4 Projects',  color: '#ED8B00', emoji: '☕' },
-  { name: 'SQL Server',  icon: '/skills/sqlserver.svg',  level: 'Advanced',     experience: '3 Years',   projects: '10 Projects', color: '#CC2927', emoji: '💾' },
-  { name: 'MySQL',       icon: '/skills/mysql.svg',       level: 'Advanced',     experience: '3 Years',   projects: '8 Projects',  color: '#4479A1', emoji: '🐬' },
-  { name: 'Django',      icon: '/skills/django.svg',      level: 'Intermediate', experience: '2 Years',   projects: '6 Projects',  color: '#092E20', emoji: '🦄' },
-  { name: 'HTML',        icon: '/skills/html5.svg',       level: 'Advanced',     experience: '4 Years',   projects: '20 Projects', color: '#E34F26', emoji: '🌐' },
-  { name: 'CSS',         icon: '/skills/css3.svg',         level: 'Advanced',     experience: '4 Years',   projects: '20 Projects', color: '#1572B6', emoji: '🎨' },
-  { name: 'JavaScript',  icon: '/skills/javascript.svg',  level: 'Advanced',     experience: '3 Years',   projects: '15 Projects', color: '#F7DF1E', emoji: '⚡' },
-  { name: 'Git',         icon: '/skills/git.svg',         level: 'Advanced',     experience: '4 Years',   projects: '25 Projects', color: '#F05032', emoji: '🌿' },
-  { name: 'GitHub',      icon: '/skills/github.svg',      level: 'Advanced',     experience: '4 Years',   projects: '25 Projects', color: '#ffffff', emoji: '🐙' },
-  { name: 'n8n',         icon: '/skills/n8n.svg',         level: 'Advanced',     experience: '1.5 Years', projects: '8 Projects',  color: '#EA4B71', emoji: '🔗' },
-  { name: 'Matplotlib',  icon: '/skills/matplotlib.svg',  level: 'Intermediate', experience: '1.5 Years', projects: '5 Projects',  color: '#11557C', emoji: '📊' },
+  { name: 'Python',      deviconClass: 'devicon-python-plain',                 level: 'Advanced',     experience: '3+ Years', projects: '12', color: '#3776AB', emoji: '🐍' },
+  { name: 'C',           deviconClass: 'devicon-c-plain',                      level: 'Intermediate', experience: '2 Years',   projects: '5',  color: '#A8B9CC', emoji: '💻' },
+  { name: 'C++',         deviconClass: 'devicon-cplusplus-plain',              level: 'Intermediate', experience: '2 Years',   projects: '6',  color: '#00599C', emoji: '⚙️' },
+  { name: 'Java',        deviconClass: 'devicon-java-plain',                   level: 'Intermediate', experience: '1.5 Years', projects: '4',  color: '#ED8B00', emoji: '☕' },
+  { name: 'SQL Server',  deviconClass: 'devicon-microsoftsqlserver-plain',     level: 'Advanced',     experience: '3 Years',   projects: '10', color: '#CC2927', emoji: '💾' },
+  { name: 'MySQL',       deviconClass: 'devicon-mysql-plain',                  level: 'Advanced',     experience: '3 Years',   projects: '8',  color: '#4479A1', emoji: '🐬' },
+  { name: 'Django',      deviconClass: 'devicon-django-plain',                 level: 'Intermediate', experience: '2 Years',   projects: '6',  color: '#092E20', emoji: '🦄' },
+  { name: 'HTML',        deviconClass: 'devicon-html5-plain',                  level: 'Advanced',     experience: '4 Years',   projects: '20', color: '#E34F26', emoji: '🌐' },
+  { name: 'CSS',         deviconClass: 'devicon-css3-plain',                   level: 'Advanced',     experience: '4 Years',   projects: '20', color: '#1572B6', emoji: '🎨' },
+  { name: 'JavaScript',  deviconClass: 'devicon-javascript-plain',             level: 'Advanced',     experience: '3 Years',   projects: '15', color: '#F7DF1E', emoji: '⚡' },
+  { name: 'Git',         deviconClass: 'devicon-git-plain',                    level: 'Advanced',     experience: '4 Years',   projects: '25', color: '#F05032', emoji: '🌿' },
+  { name: 'GitHub',      deviconClass: 'devicon-github-original',              level: 'Advanced',     experience: '4 Years',   projects: '25', color: '#ffffff', emoji: '🐙' },
+  { name: 'n8n',         icon: '/skills/n8n.svg',                              level: 'Advanced',     experience: '1.5 Years', projects: '8',  color: '#EA4B71', emoji: '🔗' },
 ]
 
 const marketingCreativeSkills = [
@@ -40,61 +39,20 @@ const softSkills = [
   { name: 'Creativity',       detail: 'Inventive UX & Code Design',  emoji: '💡', color: '#EC4899' },
 ]
 
-/* draw sphere wireframe (geodesic look) */
-function drawWireframe(ctx, cx, cy, r) {
-  ctx.save()
-  ctx.strokeStyle = 'rgba(255, 78, 5, 0.18)'
-  ctx.lineWidth = 0.8
-
-  const latLines = 8
-  for (let i = 1; i < latLines; i++) {
-    const lat = (Math.PI * i) / latLines - Math.PI / 2
-    const ry = Math.cos(lat) * r
-    const y = cy + Math.sin(lat) * r
-    ctx.beginPath()
-    ctx.ellipse(cx, y, ry, ry * 0.22, 0, 0, 2 * Math.PI)
-    ctx.stroke()
-  }
-
-  const lonLines = 8
-  for (let i = 0; i < lonLines; i++) {
-    const angle = (Math.PI * i) / lonLines
-    ctx.beginPath()
-    ctx.ellipse(cx, cy, Math.sin(angle) * r, r, angle, 0, 2 * Math.PI)
-    ctx.stroke()
-  }
-  ctx.restore()
-}
-
 /* ── 3-D SPHERE COMPONENT ── */
 function SkillSphere({ skills }) {
-  const canvasRef = useRef(null)
-  const items = useRef([])
-  const animRef = useRef(null)
-  const container = useRef(null)
-  const offscreenIcons = useRef({})
-
-  // Interaction & Hover States
+  const containerRef = useRef(null)
+  const nodeRefs = useRef([])
+  const [hoveredSkill, setHoveredSkill] = useState(null)
   const isDragging = useRef(false)
   const lastMousePos = useRef({ x: 0, y: 0 })
   const velocity = useRef({ x: 0.003, y: 0.006 })
-  const [hoveredSkill, setHoveredSkill] = useState(null)
-  const hoveredSkillRef = useRef(null)
+  const animRef = useRef(null)
+
+  // Coordinates of items
+  const items = useRef([])
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext('2d')
-    
-    // Responsive sizing
-    const resize = () => {
-      const w = container.current?.clientWidth || 480
-      const size = Math.min(w, 520)
-      canvas.width = size
-      canvas.height = size
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
     const N = skills.length
     const goldenRatio = (1 + Math.sqrt(5)) / 2
     items.current = skills.map((skill, i) => {
@@ -107,30 +65,20 @@ function SkillSphere({ skills }) {
         z: Math.cos(theta)
       }
     })
+  }, [skills])
 
-    // Pre-render SVGs to offscreen canvases
-    skills.forEach(skill => {
-      const oc = document.createElement('canvas')
-      oc.width = 64
-      oc.height = 64
-      const octx = oc.getContext('2d')
-      const img = new Image()
-      img.onload = () => {
-        octx.drawImage(img, 0, 0, 64, 64)
-        offscreenIcons.current[skill.name] = oc
-      }
-      img.src = skill.icon
-    })
+  // Animation Loop updating refs directly for high performance
+  useEffect(() => {
+    const update = () => {
+      if (!containerRef.current) return
 
-    const draw = () => {
-      const W = canvas.width, H = canvas.height
-      const cx = W / 2, cy = H / 2
-      const r = (Math.min(W, H) / 2) * 0.76
+      const W = containerRef.current.clientWidth || 480
+      const cx = W / 2
+      const cy = W / 2
+      const r = (W / 2) * 0.76
 
-      ctx.clearRect(0, 0, W, H)
-
-      // Slow rotation down on hover trigger
-      const isHovered = hoveredSkillRef.current !== null
+      // Slow down auto-rotation on hover
+      const isHovered = hoveredSkill !== null
 
       if (!isDragging.current) {
         if (isHovered) {
@@ -149,8 +97,8 @@ function SkillSphere({ skills }) {
       const rotX = velocity.current.x
       const rotY = velocity.current.y
 
-      // Apply rotation matrices
-      items.current.forEach(it => {
+      // Rotate coordinates
+      items.current.forEach((it, idx) => {
         const cosY = Math.cos(rotY), sinY = Math.sin(rotY)
         const x1 = it.x * cosY - it.z * sinY
         const z1 = it.x * sinY + it.z * cosY
@@ -162,50 +110,33 @@ function SkillSphere({ skills }) {
         it.x = x1
         it.y = y1
         it.z = z2
-      })
 
-      // Wireframe background rendering
-      drawWireframe(ctx, cx, cy, r)
+        // Apply visual properties to the DOM element directly
+        const el = nodeRefs.current[idx]
+        if (el) {
+          const scale = (it.z + 1.8) / 2.8
+          const px = cx + it.x * r
+          const py = cy + it.y * r
+          const opacity = Math.max(0.22, (it.z + 1.5) / 2.5)
+          const zIndex = Math.round((it.z + 1) * 100)
 
-      // Render items sorted by depth
-      const sorted = [...items.current].sort((a, b) => b.z - a.z)
-
-      sorted.forEach(it => {
-        const scale = (it.z + 1.8) / 2.8
-        const px = cx + it.x * r
-        const py = cy + it.y * r
-        
-        const opacity = Math.max(0.35, (it.z + 1.5) / 2.5)
-        const iconSize = Math.round(44 * scale)
-        const fontSize = Math.round(11 * scale)
-
-        // Draw cached offscreen canvas icon
-        const oc = offscreenIcons.current[it.skill.name]
-        if (oc) {
-          ctx.save()
-          ctx.globalAlpha = opacity
-          ctx.drawImage(oc, px - iconSize / 2, py - iconSize / 2 - 8, iconSize, iconSize)
-          ctx.restore()
+          el.style.left = `${px}px`
+          el.style.top = `${py}px`
+          el.style.transform = `translate(-50%, -50%) scale(${scale})`
+          el.style.opacity = opacity
+          el.style.zIndex = zIndex
         }
-
-        // Draw label text below icon
-        ctx.save()
-        ctx.globalAlpha = opacity
-        ctx.font = `600 ${Math.max(9, fontSize)}px 'Poppins', sans-serif`
-        ctx.fillStyle = '#ffffff'
-        ctx.shadowColor = '#000000'
-        ctx.shadowBlur = 6
-        ctx.textAlign = 'center'
-        ctx.fillText(it.skill.name, px, py + iconSize / 2 + 6)
-        ctx.restore()
       })
 
-      animRef.current = requestAnimationFrame(draw)
+      animRef.current = requestAnimationFrame(update)
     }
 
-    animRef.current = requestAnimationFrame(draw)
+    animRef.current = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(animRef.current)
+  }, [hoveredSkill])
 
-    // Event Handlers for Dragging
+  // Dragging event handlers
+  useEffect(() => {
     const handlePointerDown = (e) => {
       isDragging.current = true
       lastMousePos.current = { x: e.clientX, y: e.clientY }
@@ -226,76 +157,110 @@ function SkillSphere({ skills }) {
       isDragging.current = false
     }
 
-    canvas.addEventListener('pointerdown', handlePointerDown)
-    window.addEventListener('pointermove', handlePointerMove)
-    window.addEventListener('pointerup', handlePointerUp)
+    const el = containerRef.current
+    if (el) {
+      el.addEventListener('pointerdown', handlePointerDown)
+      window.addEventListener('pointermove', handlePointerMove)
+      window.addEventListener('pointerup', handlePointerUp)
+    }
 
     return () => {
-      cancelAnimationFrame(animRef.current)
-      window.removeEventListener('resize', resize)
-      canvas.removeEventListener('pointerdown', handlePointerDown)
+      if (el) el.removeEventListener('pointerdown', handlePointerDown)
       window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('pointerup', handlePointerUp)
     }
-  }, [skills])
-
-  // Mouse hover event detection on front-facing sphere nodes
-  const handleCanvasMouseMove = (e) => {
-    if (isDragging.current) {
-      hoveredSkillRef.current = null
-      setHoveredSkill(null)
-      return
-    }
-
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const rect = canvas.getBoundingClientRect()
-    
-    // Convert client coordinates to canvas internal coordinates
-    const mouseX = ((e.clientX - rect.left) / rect.width) * canvas.width
-    const mouseY = ((e.clientY - rect.top) / rect.height) * canvas.height
-
-    const W = canvas.width, H = canvas.height
-    const cx = W / 2, cy = H / 2
-    const r = (Math.min(W, H) / 2) * 0.76
-
-    let found = null
-
-    items.current.forEach(it => {
-      if (it.z < -0.25) return // Ignore elements at the back of the sphere
-      
-      const scale = (it.z + 1.8) / 2.8
-      const px = cx + it.x * r
-      const py = cy + it.y * r
-      const iconSize = Math.round(44 * scale)
-      
-      const dist = Math.hypot(mouseX - px, mouseY - (py - 8))
-      if (dist < iconSize * 0.95) {
-        found = {
-          skill: it.skill,
-          clientX: e.clientX,
-          clientY: e.clientY
-        }
-      }
-    })
-
-    hoveredSkillRef.current = found
-    setHoveredSkill(found)
-  }
-
-  const handleCanvasMouseLeave = () => {
-    hoveredSkillRef.current = null
-    setHoveredSkill(null)
-  }
+  }, [])
 
   return (
-    <div ref={container} className="sphere__container" style={{ position: 'relative' }}>
-      <canvas 
-        ref={canvasRef} 
-        className="sphere__canvas" 
-        onMouseMove={handleCanvasMouseMove}
-        onMouseLeave={handleCanvasMouseLeave}
-      />
+    <div 
+      ref={containerRef} 
+      className="sphere__container" 
+      style={{ 
+        position: 'relative', 
+        userSelect: 'none', 
+        touchAction: 'none',
+        cursor: 'grab' 
+      }}
+    >
+      {/* SVG Sphere Background Wireframe for depth and 3D visual look */}
+      <svg 
+        className="sphere__wireframe" 
+        viewBox="0 0 480 480" 
+        style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          pointerEvents: 'none',
+          opacity: 0.6,
+          width: '100%',
+          height: '100%'
+        }}
+      >
+        {Array.from({ length: 8 }).map((_, i) => {
+          if (i === 0) return null
+          const lat = (Math.PI * i) / 8 - Math.PI / 2
+          const ry = Math.cos(lat) * 180
+          const y = 240 + Math.sin(lat) * 180
+          return (
+            <ellipse 
+              key={`lat-${i}`} 
+              cx="240" 
+              cy={y} 
+              rx={ry} 
+              ry={ry * 0.22} 
+              fill="none" 
+              stroke="rgba(255, 78, 5, 0.18)" 
+              strokeWidth="0.8" 
+            />
+          )
+        })}
+        {Array.from({ length: 8 }).map((_, i) => {
+          const angle = (Math.PI * i) / 8
+          return (
+            <ellipse 
+              key={`lon-${i}`} 
+              cx="240" 
+              cy="240" 
+              rx={Math.sin(angle) * 180} 
+              ry="180" 
+              fill="none" 
+              stroke="rgba(255, 78, 5, 0.18)" 
+              strokeWidth="0.8" 
+              transform={`rotate(${(angle * 180) / Math.PI} 240 240)`} 
+            />
+          )
+        })}
+      </svg>
+
+      {/* Render 3D DOM Nodes */}
+      {skills.map((skill, idx) => (
+        <div
+          key={idx}
+          ref={el => nodeRefs.current[idx] = el}
+          className="sphere-node"
+          style={{ '--node-color': skill.color }}
+          onMouseEnter={(e) => {
+            setHoveredSkill({
+              skill,
+              clientX: e.clientX,
+              clientY: e.clientY
+            })
+          }}
+          onMouseMove={(e) => {
+            setHoveredSkill(prev => prev ? {
+              ...prev,
+              clientX: e.clientX,
+              clientY: e.clientY
+            } : null)
+          }}
+          onMouseLeave={() => setHoveredSkill(null)}
+        >
+          {skill.deviconClass ? (
+            <i className={`${skill.deviconClass} colored`} />
+          ) : (
+            <img src={skill.icon} alt={skill.name} />
+          )}
+        </div>
+      ))}
 
       <AnimatePresence>
         {hoveredSkill && (
@@ -306,8 +271,8 @@ function SkillSphere({ skills }) {
             exit={{ opacity: 0, scale: 0.85, y: 10 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
             style={{ 
-              left: hoveredSkill.clientX - container.current.getBoundingClientRect().left + 15, 
-              top: hoveredSkill.clientY - container.current.getBoundingClientRect().top + 15,
+              left: hoveredSkill.clientX - containerRef.current.getBoundingClientRect().left + 15, 
+              top: hoveredSkill.clientY - containerRef.current.getBoundingClientRect().top + 15,
               borderColor: hoveredSkill.skill.color + '40',
               borderLeft: `4px solid ${hoveredSkill.skill.color}`
             }}

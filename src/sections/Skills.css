@@ -88,15 +88,34 @@
   position: relative;
 }
 
-.sphere__canvas {
-  display: block;
-  width: 100%;
-  height: auto;
-  cursor: grab;
-  user-select: none;
-  touch-action: none;
+.sphere-node {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform, opacity;
 }
-.sphere__canvas:active { cursor: grabbing; }
+
+.sphere-node i {
+  font-size: 54px;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+.sphere-node img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+.sphere-node:hover i,
+.sphere-node:hover img {
+  filter: drop-shadow(0 0 16px var(--node-color, #ff4e05)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  transform: scale(1.15);
+}
 
 /* ── Premium Canvas Tooltip ── */
 .sphere-tooltip {
