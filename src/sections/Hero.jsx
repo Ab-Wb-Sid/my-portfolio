@@ -8,7 +8,7 @@ import './Hero.css'
 const typingText = "Software Engineer & Full-Stack Developer with a passion for building scalable systems, AI-powered automation, and elegant web experiences. Let's create something great together."
 
 const stats = [
-  { num: '3', label: 'Projects Built' },
+  { num: '4', label: 'Projects Built' },
   { num: '5', label: 'Technologies' },
   { num: '2', label: 'Years Coding' },
 ]

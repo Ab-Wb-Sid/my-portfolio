@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { RiArrowLeftLine, RiArrowRightSLine, RiGithubLine, RiImageAddLine } from 'react-icons/ri'
 import Footer from '../sections/Footer'
 import headerBg from '../assets/header-bg.png'
+import project5 from '../assets/project-5.png'
 import './ProjectsPage.css'
 
 const projects = [
@@ -15,6 +16,7 @@ const projects = [
     status: 'progress',
     progress: 45,
     github: 'https://github.com/Ab-Wb-Sid/AI-Automation-Workflow-Builder',
+    image: project5,
     reverse: false,
   },
   {
@@ -24,6 +26,8 @@ const projects = [
     tags: ['C++', 'NLP', 'Rabin-Karp', 'Tokenization', 'Cosine Similarity', 'Stemming'],
     status: 'done',
     progress: 100,
+    github: 'https://github.com/Ab-Wb-Sid/Plagiarism-Detection-System',
+    image: project5,
     year: '2025',
     reverse: true,
   },
@@ -36,7 +40,20 @@ const projects = [
     progress: 100,
     year: '2024',
     github: 'https://github.com/Ab-Wb-Sid/OOP-Project-JavaFX',
+    image: project5,
     reverse: false,
+  },
+  {
+    index: '04',
+    title: 'CRM Software',
+    desc: "A CRM system tailored for software houses, helping teams organize leads, clients, projects, follow-ups, and internal sales activity in one focused workspace.",
+    tags: ['CRM', 'Software House', 'Client Management', 'Lead Tracking', 'Dashboard'],
+    status: 'done',
+    progress: 100,
+    year: '2026',
+    github: 'https://github.com/Ab-Wb-Sid/CRM-System',
+    image: project5,
+    reverse: true,
   },
 ]
 
@@ -91,11 +108,17 @@ export default function ProjectsPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
             >
-              <div className="pcard__image pcard__image--placeholder">
-                <div className="placeholder__deco" />
-                <div className="placeholder__icon"><RiImageAddLine /></div>
-                <span className="placeholder__label">Add screenshot</span>
-              </div>
+              {p.image ? (
+                <div className="pcard__image">
+                  <img src={p.image} alt={p.title} />
+                </div>
+              ) : (
+                <div className="pcard__image pcard__image--placeholder">
+                  <div className="placeholder__deco" />
+                  <div className="placeholder__icon"><RiImageAddLine /></div>
+                  <span className="placeholder__label">Add screenshot</span>
+                </div>
+              )}
 
               <div className="pcard__body">
                 <div>
@@ -125,7 +148,7 @@ export default function ProjectsPage() {
                     </div>
                     <span className="pcard__progress-label" style={{ minWidth: '2.5rem' }}>{p.progress}%</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <div className="pcard__meta">
                     {p.year && <span className="pcard__year">{p.year}</span>}
                     {p.github && (
                       <div className="pcard__links">

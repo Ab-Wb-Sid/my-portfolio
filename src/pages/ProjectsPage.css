@@ -30,20 +30,32 @@
 .projects-hero__breadcrumb a:hover { opacity: 0.8; }
 .projects-hero__title {
   font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 700; color: var(--white); line-height: 1.1;
+  font-weight: 800; color: var(--white); line-height: 1.1;
 }
 .projects-hero__title span { color: var(--secondary-color); }
-.projects-hero__sub { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
+.projects-hero__sub { max-width: 620px; font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-top: 0.5rem; }
 
 /* Full section */
 .projects-full { 
   background-color: var(--primary-color); 
   background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 24px 24px;
+  overflow: hidden;
   position: relative; 
   padding: 4rem 1rem 6rem; 
 }
-.projects-full__inner { max-width: var(--max-width); margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
+.projects-full::before {
+  content: '';
+  position: absolute;
+  top: 8rem;
+  left: -8rem;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 78, 5, 0.06), transparent 70%);
+  pointer-events: none;
+}
+.projects-full__inner { max-width: var(--max-width); margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; position: relative; z-index: 1; }
 
 /* Back button */
 .back-btn {
@@ -58,11 +70,11 @@
 
 /* Project card */
 .pcard {
-  background-color: var(--text-dark); border-radius: 12px;
+  background: rgba(17, 24, 32, 0.72); border: 1px solid var(--border); border-radius: 12px;
   overflow: hidden; display: grid; grid-template-columns: 1fr;
-  position: relative; transition: box-shadow 0.3s;
+  position: relative; transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
 }
-.pcard:hover { box-shadow: 0 12px 40px rgba(255, 78, 5, 0.18); }
+.pcard:hover { border-color: rgba(255, 78, 5, 0.32); box-shadow: 0 16px 44px rgba(255, 78, 5, 0.14); transform: translateY(-4px); }
 .pcard::before {
   content: ''; position: absolute; inset: 0; border-radius: 12px;
   border: 1px solid transparent; transition: border-color 0.4s;
@@ -81,6 +93,13 @@
 .pcard__image {
   position: relative; overflow: hidden; min-height: 260px;
   background: #0d0d19; display: flex; align-items: center; justify-content: center;
+}
+.pcard__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 55%);
+  pointer-events: none;
 }
 .pcard__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .pcard:hover .pcard__image img { transform: scale(1.05); }
@@ -115,7 +134,7 @@
 }
 
 /* Body side */
-.pcard__body { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; }
+.pcard__body { padding: clamp(1.5rem, 3vw, 2rem); display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; min-width: 0; }
 .pcard__index { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary-color); opacity: 0.7; }
 .pcard__title { font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1.25; margin: 0.3rem 0 0.75rem; }
 .pcard__desc { font-size: 0.875rem; color: var(--text-light); line-height: 1.75; }
@@ -155,6 +174,7 @@
 .pcard__progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
 .pcard__progress-fill { height: 100%; border-radius: 999px; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1); background: linear-gradient(90deg, #ff4e05, #f89b29); }
 .pcard__year { font-size: 0.75rem; color: var(--text-light); font-weight: 500; }
+.pcard__meta { display: flex; align-items: center; gap: 1rem; }
 .pcard__links { display: flex; gap: 0.6rem; }
 .pcard__link {
   width: 34px; height: 34px; border-radius: 6px;
@@ -164,3 +184,31 @@
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 .pcard__link:hover { border-color: var(--secondary-color); color: var(--secondary-color); background: rgba(255,78,5,0.08); }
+
+@media (max-width: 640px) {
+  .projects-hero {
+    min-height: 34vh;
+    padding-bottom: 2rem;
+  }
+
+  .projects-full {
+    padding: 3rem 0.75rem 4.5rem;
+  }
+
+  .projects-full__inner {
+    gap: 1.5rem;
+  }
+
+  .back-btn {
+    margin-bottom: 0.5rem;
+  }
+
+  .pcard__image {
+    min-height: 210px;
+  }
+
+  .pcard__progress {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}

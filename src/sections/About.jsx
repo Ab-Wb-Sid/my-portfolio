@@ -5,7 +5,7 @@ import aboutImg from '../assets/about-bg.jpg'
 import './About.css'
 
 const facts = [
-  { num: '3+', label: 'Projects' },
+  { num: '4+', label: 'Projects' },
   { num: '5+', label: 'Tech Stack' },
   { num: '2+', label: 'Years Exp.' },
 ]

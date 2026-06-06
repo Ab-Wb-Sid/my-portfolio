@@ -1,6 +1,16 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import {
+  RiArrowLeftLine,
+  RiArrowRightSLine,
+  RiCodeSSlashLine,
+  RiMegaphoneLine,
+  RiRocketLine,
+  RiTeamLine,
+} from 'react-icons/ri'
+import Footer from '../sections/Footer'
+import headerBg from '../assets/header-bg.png'
 import './AboutDetails.css'
 
 const fadeUp = {
@@ -8,39 +18,89 @@ const fadeUp = {
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] } }),
 }
 
+const strengths = [
+  {
+    icon: <RiCodeSSlashLine />,
+    title: 'Engineering',
+    text: 'Python, C++, full-stack systems, automation workflows, and performance-minded application design.',
+  },
+  {
+    icon: <RiMegaphoneLine />,
+    title: 'Growth',
+    text: 'SEO, affiliate marketing, ad campaigns, e-commerce operations, and content built for discoverability.',
+  },
+  {
+    icon: <RiRocketLine />,
+    title: 'Execution',
+    text: 'I connect technical delivery with practical business outcomes, from prototype to polished launch.',
+  },
+  {
+    icon: <RiTeamLine />,
+    title: 'Mentorship',
+    text: 'Teaching and guiding others in programming, design, and digital marketing with clear, hands-on support.',
+  },
+]
+
 export default function AboutDetails() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
-    <section className="about-details">
-      <div className="section__container about-details__container">
-        <motion.h2 className="section__title" custom={0} variants={fadeUp} initial="hidden" animate="visible">
-          About <span>Me</span>
-        </motion.h2>
-        <motion.p className="section__subtitle" custom={1} variants={fadeUp} initial="hidden" animate="visible">
-          Software Engineer &amp; Full-Stack Developer
-        </motion.p>
+    <>
+      <section className="about-hero" style={{ backgroundImage: `url(${headerBg})` }}>
+        <div className="about-hero__content">
+          <div className="about-hero__breadcrumb">
+            <Link to="/">Home</Link>
+            <RiArrowRightSLine />
+            <span>About</span>
+          </div>
+          <motion.h1 className="about-hero__title" custom={0} variants={fadeUp} initial="hidden" animate="visible">
+            About <span>Me</span>
+          </motion.h1>
+          <motion.p className="about-hero__sub" custom={1} variants={fadeUp} initial="hidden" animate="visible">
+            Software Engineer, full-stack developer, and digital growth builder.
+          </motion.p>
+        </div>
+      </section>
 
-        <motion.p className="about-details__content" custom={2} variants={fadeUp} initial="hidden" animate="visible">
-          I am a versatile professional with expertise in both technical development and digital marketing. Proficient in <strong>Python</strong> and <strong>C++</strong>, I specialize in building scalable applications, automating workflows, and optimizing system performance. My passion for problem-solving drives me to create efficient and innovative solutions for complex challenges.
-        </motion.p>
-        <motion.p className="about-details__content" custom={3} variants={fadeUp} initial="hidden" animate="visible">
-          In the realm of digital marketing, I excel in <strong>SEO optimization</strong>, <strong>affiliate marketing</strong>, and designing effective <strong>ad campaigns</strong> for social media and search engines. I have hands-on experience in managing <strong>e-commerce platforms</strong>, ensuring seamless online shopping experiences for users. Additionally, I create engaging, <strong>SEO-friendly content</strong> for blogs, websites, and social media platforms, helping businesses grow their online presence.
-        </motion.p>
-        <motion.p className="about-details__content" custom={4} variants={fadeUp} initial="hidden" animate="visible">
-          I am also skilled in <strong>video and photo editing</strong>, producing professional and creative visual content for various projects. Beyond my technical and creative skills, I am passionate about <strong>teaching and mentoring</strong> in programming, design, and digital marketing, empowering others to achieve their goals.
-        </motion.p>
-        <motion.p className="about-details__content" custom={5} variants={fadeUp} initial="hidden" animate="visible">
-          Throughout my career, I have achieved several milestones, including developing high-performing applications, driving organic traffic growth, and delivering successful marketing campaigns. My collaborative approach and dedication to continuous learning enable me to deliver exceptional results for every project I undertake.
-        </motion.p>
-        <motion.p className="about-details__content" custom={6} variants={fadeUp} initial="hidden" animate="visible">
-          I am constantly exploring new technologies and trends to stay ahead in the ever-evolving tech and marketing landscape. Whether it's building robust software solutions or crafting impactful marketing strategies, I am committed to delivering excellence in everything I do.
-        </motion.p>
+      <section className="about-details">
+        <div className="about-details__inner">
+          <Link to="/" className="back-btn">
+            <RiArrowLeftLine /> Back to Portfolio
+          </Link>
 
-        <motion.div custom={7} variants={fadeUp} initial="hidden" animate="visible">
-          <Link to="/" className="btn">Back to Home</Link>
-        </motion.div>
-      </div>
-    </section>
+          <motion.div className="about-details__intro-card" custom={2} variants={fadeUp} initial="hidden" animate="visible">
+            <span className="section__label">Profile</span>
+            <h2 className="section__title">Building useful software with <span>business context</span></h2>
+            <p className="section__subtitle">
+              I work across engineering, automation, and digital marketing, which helps me think beyond the code and design solutions that are practical, scalable, and easy to use.
+            </p>
+          </motion.div>
+
+          <div className="about-details__grid">
+            {strengths.map((item, i) => (
+              <motion.article className="about-details__card" key={item.title} custom={i + 3} variants={fadeUp} initial="hidden" animate="visible">
+                <div className="about-details__icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </motion.article>
+            ))}
+          </div>
+
+          <motion.div className="about-details__story" custom={7} variants={fadeUp} initial="hidden" animate="visible">
+            <p>
+              I am a versatile professional with expertise in both technical development and digital marketing. Proficient in <strong>Python</strong> and <strong>C++</strong>, I specialize in building scalable applications, automating workflows, and optimizing system performance.
+            </p>
+            <p>
+              I also bring hands-on experience in <strong>SEO optimization</strong>, <strong>affiliate marketing</strong>, social media campaigns, e-commerce platforms, and SEO-friendly content. That blend helps me create digital products that are not only functional, but also positioned to grow.
+            </p>
+            <p>
+              Beyond development and marketing, I enjoy <strong>teaching and mentoring</strong>. I am constantly exploring new technologies and trends, with a focus on delivering clean, reliable, and thoughtful work for every project.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
   )
 }
