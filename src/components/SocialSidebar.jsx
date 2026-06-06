@@ -24,7 +24,7 @@ export default function SocialSidebar() {
             <RiInstagramLine />
           </a>
           <a 
-            href="mailto:aw1411175@gmail.com" 
+            href="mailto:connect.abdulwahabsiddiqi@gmail.com" 
             className="social-icon-link" 
             target="_blank" 
             rel="noreferrer" 

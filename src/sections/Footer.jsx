@@ -73,18 +73,29 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="contact__socials-title">Follow Me</div>
-            <div className="contact__socials">
-              <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" className="social-icon" target="_blank" rel="noreferrer" title="Instagram">
-                <RiInstagramLine />
-              </a>
-              <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" className="social-icon" target="_blank" rel="noreferrer" title="LinkedIn">
-                <RiLinkedinFill />
-              </a>
-              <a href="mailto:aw1411175@gmail.com" className="social-icon" target="_blank" rel="noreferrer" title="Email">
-                <RiMailLine />
-              </a>
+            <div className="contact__card">
+              <div className="contact__card-icon">
+                <RiPhoneLine />
+              </div>
+              <div className="contact__card-details">
+                <h4>Phone</h4>
+                <p><a href="tel:+923214567890">+92 321 4567890</a></p>
+              </div>
             </div>
+          </div>
+
+          <div className="contact__socials-title">Follow Me</div>
+          <div className="contact__socials">
+            <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" className="social-icon" target="_blank" rel="noreferrer" title="Instagram">
+              <RiInstagramLine />
+            </a>
+            <a href="https://www.linkedin.com/in/abdul-wahab-siddiqi-03a6ab33b" className="social-icon" target="_blank" rel="noreferrer" title="LinkedIn">
+              <RiLinkedinFill />
+            </a>
+            <a href="mailto:connect.abdulwahabsiddiqi@gmail.com" className="social-icon" target="_blank" rel="noreferrer" title="Email">
+              <RiMailLine />
+            </a>
+          </div>
         </motion.div>
 
         {/* Right Side: Form Card */}
