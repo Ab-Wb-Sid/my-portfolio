@@ -44,7 +44,7 @@ export default function Footer() {
 
         {/* Left Side: Info Panel */}
         <motion.div className="contact__info-panel"
-          initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
           <span className="section__label">Get In Touch</span>
           <h2 className="section__title">Let's Work <span>Together</span></h2>
@@ -73,15 +73,6 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="contact__card">
-              <div className="contact__card-icon">
-                <RiPhoneLine />
-              </div>
-              <div className="contact__card-details">
-                <h4>Phone</h4>
-                <p><a href="tel:+923214567890">+92 321 4567890</a></p>
-              </div>
-            </div>
           </div>
 
           <div className="contact__socials-title">Follow Me</div>
@@ -100,7 +91,7 @@ export default function Footer() {
 
         {/* Right Side: Form Card */}
         <motion.div className="contact__form-card"
-          initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
 
           <form className="contact__form" onSubmit={handleSubmit}>
@@ -124,7 +115,7 @@ export default function Footer() {
             <div className="form-input-wrapper">
               <label htmlFor="contact-phone">Phone Number</label>
               <div className="input-with-icon">
-                <input type="text" id="contact-phone" name="phone" placeholder="+92 321 4567890" />
+                <input type="text" id="contact-phone" name="phone" placeholder="+00 000 0000000" />
                 <RiPhoneLine className="input-icon" />
               </div>
             </div>
