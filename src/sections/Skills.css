@@ -83,9 +83,9 @@
   max-width: 480px;
   aspect-ratio: 1;
   margin: 0 auto;
-  /* subtle outer glow ring */
   filter: drop-shadow(0 0 40px rgba(255,78,5,0.12));
-  overflow: hidden;
+  overflow: visible; /* Allows tooltip to overflow container slightly */
+  position: relative;
 }
 
 .sphere__canvas {
@@ -94,54 +94,171 @@
   height: auto;
   cursor: grab;
   user-select: none;
-  touch-action: none; /* Prevent scroll while dragging on mobile */
+  touch-action: none;
 }
 .sphere__canvas:active { cursor: grabbing; }
 
-/* ── Non-Technical Badges ── */
-.nontechnical__list {
+/* ── Premium Canvas Tooltip ── */
+.sphere-tooltip {
+  position: absolute;
+  z-index: 100;
+  background: rgba(10, 16, 24, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  pointer-events: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 175px;
+  text-align: left;
+}
+
+.tooltip-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+
+.tooltip-emoji {
+  font-size: 1.1rem;
+}
+
+.tooltip-level {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.tooltip-detail {
+  font-size: 0.76rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* ── Non-Technical Badges Section ── */
+.nontechnical__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: 950px;
+  margin: 3rem auto 1rem;
+}
+
+.nontechnical__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nontechnical__subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 0.52rem;
+  letter-spacing: -0.01em;
+}
+
+.nontechnical__subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.nontechnical__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
-  max-width: 800px;
-  margin: 3rem auto 1rem auto;
+  width: 100%;
 }
 
 .nontechnical__badge {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 0.8rem 1.5rem;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  gap: 1rem;
+  background: rgba(17, 24, 32, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nontechnical__badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle at 10% 10%, var(--badge-color) 0.08, transparent 40%);
+  pointer-events: none;
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
 }
 
 .nontechnical__badge:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) !important;
+  border-color: var(--badge-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 255, 255, 0.02);
 }
 
-.nontechnical__badge-icon {
-  width: 24px;
-  height: 24px;
+.nontechnical__badge-emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 
-.nontechnical__badge span {
+.nontechnical__badge-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.15rem;
+}
+
+.nontechnical__badge-name {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
+}
+
+.nontechnical__badge-desc {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  opacity: 0.65;
+  font-weight: 500;
 }
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .sphere__container { max-width: 340px; }
   .skills__tab { padding: 0.45rem 1.1rem; font-size: 0.76rem; }
-  .nontechnical__list { gap: 1rem; margin-top: 2rem; }
-  .nontechnical__badge { padding: 0.7rem 1.2rem; }
-  .nontechnical__badge span { font-size: 0.85rem; }
+  .nontechnical__container { gap: 2.5rem; margin-top: 2rem; }
+  .nontechnical__list { grid-template-columns: 1fr; }
+  .nontechnical__badge { padding: 0.9rem 1.1rem; }
 }
