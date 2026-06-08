@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { RiHandHeartLine, RiPlayFill } from 'react-icons/ri'
+import { RiHandHeartLine, RiTerminalBoxFill } from 'react-icons/ri'
 import Modal from '../components/Modal'
 import headerBg from '../assets/header-bg.png'
 import './Hero.css'
@@ -227,10 +228,10 @@ export default function Hero() {
           <button className="btn btn--say-hello" onClick={() => setHelloOpen(true)}>
             <RiHandHeartLine /> Say Hello
           </button>
-          <a href="#" className="video">
-            <div className="play"><RiPlayFill /></div>
-            <span>Watch My Video</span>
-          </a>
+          <Link to="/projects" className="projects-btn">
+            <div className="icon-box"><RiTerminalBoxFill /></div>
+            <span>View My Projects</span>
+          </Link>
         </motion.div>
       </div>
 
