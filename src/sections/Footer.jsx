@@ -9,7 +9,8 @@ import {
   RiPhoneLine,
   RiUserLine,
   RiChat3Line,
-  RiShieldCheckLine
+  RiShieldCheckLine,
+  RiGithubFill
 } from 'react-icons/ri'
 import Modal from '../components/Modal'
 import './Footer.css'
@@ -77,6 +78,9 @@ export default function Footer() {
 
           <div className="contact__socials-title">Follow Me</div>
           <div className="contact__socials">
+            <a href="https://github.com/Ab-Wb-Sid" className="social-icon" target="_blank" rel="noreferrer" title="GitHub">
+              <RiGithubFill />
+            </a>
             <a href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" className="social-icon" target="_blank" rel="noreferrer" title="Instagram">
               <RiInstagramLine />
             </a>

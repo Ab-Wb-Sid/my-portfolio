@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RiInstagramLine, RiMailLine, RiLinkedinFill, RiArrowRightSLine } from 'react-icons/ri'
+import { RiInstagramLine, RiMailLine, RiLinkedinFill, RiArrowRightSLine, RiGithubFill } from 'react-icons/ri'
 import './SocialSidebar.css'
 
 export default function SocialSidebar() {
@@ -14,6 +14,15 @@ export default function SocialSidebar() {
       {/* Sliding Panel containing the icons */}
       <div className="social-tab-panel">
         <div className="social-tab-links">
+          <a 
+            href="https://github.com/Ab-Wb-Sid" 
+            className="social-icon-link" 
+            target="_blank" 
+            rel="noreferrer" 
+            title="GitHub"
+          >
+            <RiGithubFill />
+          </a>
           <a 
             href="https://www.instagram.com/ab_wb_sid?igsh=MWRlYXd6YWY4ejhseQ==" 
             className="social-icon-link" 
