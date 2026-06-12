@@ -6,6 +6,7 @@ import SocialSidebar from './components/SocialSidebar'
 import CustomCursor from './components/CustomCursor'
 import Home from './pages/Home'
 import ProjectsPage from './pages/ProjectsPage'
+import ProjectDetailsPage from './pages/ProjectDetailsPage'
 import AboutDetails from './pages/AboutDetails'
 
 const pageTransition = {
@@ -48,6 +49,7 @@ export default function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
           <Route path="/projects" element={<AnimatedPage><ProjectsPage /></AnimatedPage>} />
+          <Route path="/projects/:slug" element={<AnimatedPage><ProjectDetailsPage /></AnimatedPage>} />
           <Route path="/about" element={<AnimatedPage><AboutDetails /></AnimatedPage>} />
         </Routes>
       </AnimatePresence>

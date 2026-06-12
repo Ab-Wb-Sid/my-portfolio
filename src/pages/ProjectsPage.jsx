@@ -4,63 +4,14 @@ import { motion } from 'framer-motion'
 import { RiArrowLeftLine, RiArrowRightSLine, RiGithubLine, RiImageAddLine } from 'react-icons/ri'
 import Footer from '../sections/Footer'
 import headerBg from '../assets/header-bg.png'
-import project5 from '../assets/project-5.png'
+import { projects } from '../data/projects'
 import './ProjectsPage.css'
-
-const projects = [
-  {
-    index: '01',
-    title: 'AI Automation Workflow Builder for SMEs',
-    desc: "An AI-powered automation hub built in Python — processing inbound messages, generating GPT-based replies and PDF quotations, and logging records to Google Sheets. Targeting a ~60% reduction in manual SME workflows.",
-    tags: ['Python', 'Node.js', 'Express.js', 'OpenAI API', 'WhatsApp Business API', 'Gmail API'],
-    status: 'progress',
-    progress: 45,
-    github: 'https://github.com/Ab-Wb-Sid/AI-Automation-Workflow-Builder',
-    image: project5,
-    reverse: false,
-  },
-  {
-    index: '02',
-    title: 'Plagiarism Detection System',
-    desc: "A C++ detection engine using 5+ NLP techniques — tokenization, stemming, cosine similarity, and Rabin-Karp n-gram hashing — producing color-coded severity reports across 3 levels of granularity.",
-    tags: ['C++', 'NLP', 'Rabin-Karp', 'Tokenization', 'Cosine Similarity', 'Stemming'],
-    status: 'done',
-    progress: 100,
-    github: 'https://github.com/Ab-Wb-Sid/Plagiarism-Detection-System',
-    image: project5,
-    year: '2025',
-    reverse: true,
-  },
-  {
-    index: '03',
-    title: 'Ping-Pong Game',
-    desc: "A real-time two-player arcade game built with JavaFX — featuring animation timelines, collision detection logic, game state management, scorekeeping, and smooth 60fps rendering.",
-    tags: ['Java', 'JavaFX', 'Game Loop', 'Collision Detection', '60fps Rendering'],
-    status: 'done',
-    progress: 100,
-    year: '2024',
-    github: 'https://github.com/Ab-Wb-Sid/OOP-Project-JavaFX',
-    image: project5,
-    reverse: false,
-  },
-  {
-    index: '04',
-    title: 'CRM Software',
-    desc: "A CRM system tailored for software houses, helping teams organize leads, clients, projects, follow-ups, and internal sales activity in one focused workspace.",
-    tags: ['CRM', 'Software House', 'Client Management', 'Lead Tracking', 'Dashboard'],
-    status: 'done',
-    progress: 100,
-    year: '2026',
-    github: 'https://github.com/Ab-Wb-Sid/CRM-System',
-    image: project5,
-    reverse: true,
-  },
-]
 
 const cardVariant = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({
-    opacity: 1, y: 0,
+    opacity: 1,
+    y: 0,
     transition: { delay: 0.05 + i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   }),
 }
@@ -70,7 +21,6 @@ export default function ProjectsPage() {
 
   return (
     <>
-      {/* Hero */}
       <section className="projects-hero" style={{ backgroundImage: `url(${headerBg})` }}>
         <div className="projects-hero__content">
           <div className="projects-hero__breadcrumb">
@@ -78,29 +28,34 @@ export default function ProjectsPage() {
             <RiArrowRightSLine />
             <span>Projects</span>
           </div>
-          <motion.h1 className="projects-hero__title"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
+          <motion.h1
+            className="projects-hero__title"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
             My <span>Projects</span>
           </motion.h1>
-          <motion.p className="projects-hero__sub"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
-            A collection of things I've built — from AI systems to game engines.
+          <motion.p
+            className="projects-hero__sub"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            A collection of things I've built, from AI systems to game engines.
           </motion.p>
         </div>
       </section>
 
-      {/* Projects List */}
       <section className="projects-full">
         <div className="projects-full__inner">
-          <Link to="/" className="back-btn">
+          <Link to="/#projects" className="back-btn">
             <RiArrowLeftLine /> Back to Portfolio
           </Link>
 
           {projects.map((p, i) => (
             <motion.article
-              className={`pcard ${p.reverse ? 'pcard--reverse' : ''}`}
+              className={`pcard ${i % 2 ? 'pcard--reverse' : ''}`}
               key={p.index}
               custom={i}
               variants={cardVariant}
@@ -109,9 +64,9 @@ export default function ProjectsPage() {
               viewport={{ once: true, amount: 0.1 }}
             >
               {p.image ? (
-                <div className="pcard__image">
+                <Link to={`/projects/${p.slug}`} className="pcard__image" aria-label={`Open ${p.title}`}>
                   <img src={p.image} alt={p.title} />
-                </div>
+                </Link>
               ) : (
                 <div className="pcard__image pcard__image--placeholder">
                   <div className="placeholder__deco" />
@@ -127,7 +82,9 @@ export default function ProjectsPage() {
                     <span className="dot" />
                     {p.status === 'progress' ? 'In Progress' : 'Completed'}
                   </div>
-                  <h2 className="pcard__title">{p.title}</h2>
+                  <Link to={`/projects/${p.slug}`} className="pcard__title-link">
+                    <h2 className="pcard__title">{p.title}</h2>
+                  </Link>
                   <p className="pcard__desc">{p.desc}</p>
                 </div>
 
@@ -139,7 +96,8 @@ export default function ProjectsPage() {
                   <div className="pcard__progress">
                     <span className="pcard__progress-label">Progress</span>
                     <div className="pcard__progress-bar">
-                      <div className="pcard__progress-fill"
+                      <div
+                        className="pcard__progress-fill"
                         style={{
                           width: `${p.progress}%`,
                           background: p.progress === 100 ? 'linear-gradient(90deg,#4ade80,#22c55e)' : undefined,

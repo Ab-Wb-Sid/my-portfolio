@@ -136,7 +136,9 @@
 /* Body side */
 .pcard__body { padding: clamp(1.5rem, 3vw, 2rem); display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; min-width: 0; }
 .pcard__index { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--secondary-color); opacity: 0.7; }
+.pcard__title-link { display: inline-block; }
 .pcard__title { font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1.25; margin: 0.3rem 0 0.75rem; }
+.pcard__title-link:hover .pcard__title { color: var(--secondary-color); }
 .pcard__desc { font-size: 0.875rem; color: var(--text-light); line-height: 1.75; }
 
 /* Status badge */
