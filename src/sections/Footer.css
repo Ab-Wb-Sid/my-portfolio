@@ -2,6 +2,7 @@
 .footer-section {
   background: #000000;
   position: relative;
+  z-index: 1;
   overflow: hidden;
   padding: 6rem 0 2rem;
 }
