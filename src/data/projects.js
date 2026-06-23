@@ -1,9 +1,24 @@
-import project1 from '../assets/project-1.png'
-import project2 from '../assets/project-2.png'
-import project3 from '../assets/project-3.png'
-import project4 from '../assets/project-4.png'
-import project5 from '../assets/project-5.png'
-import project6 from '../assets/project-6.png'
+import previewP1 from '../../assets/preview-p1.png'
+import previewP2 from '../../assets/preview-p2.png'
+import previewP3 from '../../assets/preview-p3.png'
+import previewP4 from '../../assets/preview-p4.png'
+import project11 from '../../assets/project-1.1.jpeg'
+import project12 from '../../assets/project-1.2.jpeg'
+import project13 from '../../assets/project-1.3.jpeg'
+import project21 from '../../assets/project-2.1.png'
+import project22 from '../../assets/project-2.2.png'
+import project23 from '../../assets/project-2.3.png'
+import project24 from '../../assets/project-2.4.png'
+import project31 from '../../assets/project-3.1.png'
+import project32 from '../../assets/project-3.2.png'
+import project33 from '../../assets/project-3.3.png'
+import project34 from '../../assets/project-3.4.png'
+import project41 from '../../assets/project-4.1.png'
+import project42 from '../../assets/project-4.2.png'
+import project43 from '../../assets/project-4.3.png'
+import project44 from '../../assets/project-4.4.png'
+import project45 from '../../assets/project-4.5.png'
+import project46 from '../../assets/project-4.6.png'
 
 export const projects = [
   {
@@ -18,8 +33,8 @@ export const projects = [
     progress: 45,
     year: 'In Progress',
     github: 'https://github.com/Ab-Wb-Sid/AI-Automation-Workflow-Builder',
-    image: project1,
-    gallery: [project1, project5],
+    image: previewP1,
+    gallery: [project11, project12, project13],
   },
   {
     index: '02',
@@ -33,8 +48,8 @@ export const projects = [
     progress: 100,
     year: '2025',
     github: 'https://github.com/Ab-Wb-Sid/Plagiarism-Detection-System',
-    image: project2,
-    gallery: [project2, project4],
+    image: previewP2,
+    gallery: [project21, project22, project23, project24],
   },
   {
     index: '03',
@@ -48,8 +63,8 @@ export const projects = [
     progress: 100,
     year: '2024',
     github: 'https://github.com/Ab-Wb-Sid/OOP-Project-JavaFX',
-    image: project3,
-    gallery: [project3, project6],
+    image: previewP3,
+    gallery: [project31, project32, project33, project34],
   },
   {
     index: '04',
@@ -63,7 +78,7 @@ export const projects = [
     progress: 100,
     year: '2026',
     github: 'https://github.com/Ab-Wb-Sid/CRM-System',
-    image: project5,
-    gallery: [project5, project1],
+    image: previewP4,
+    gallery: [project41, project42, project43, project44, project45, project46],
   },
 ]
