@@ -228,7 +228,7 @@ export default function Hero() {
           <button className="btn btn--say-hello" onClick={() => setHelloOpen(true)}>
             <RiHandHeartLine /> Say Hello
           </button>
-          <Link to="/projects" className="projects-btn">
+          <Link to="/#projects" className="projects-btn">
             <div className="icon-box"><RiTerminalBoxFill /></div>
             <span>View My Projects</span>
           </Link>

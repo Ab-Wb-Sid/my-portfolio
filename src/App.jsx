@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import SocialSidebar from './components/SocialSidebar'
 import CustomCursor from './components/CustomCursor'
 import Home from './pages/Home'
-import ProjectsPage from './pages/ProjectsPage'
 import ProjectDetailsPage from './pages/ProjectDetailsPage'
 import AboutDetails from './pages/AboutDetails'
 
@@ -48,7 +47,7 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-          <Route path="/projects" element={<AnimatedPage><ProjectsPage /></AnimatedPage>} />
+          <Route path="/projects" element={<Navigate to="/#projects" replace />} />
           <Route path="/projects/:slug" element={<AnimatedPage><ProjectDetailsPage /></AnimatedPage>} />
           <Route path="/about" element={<AnimatedPage><AboutDetails /></AnimatedPage>} />
         </Routes>
